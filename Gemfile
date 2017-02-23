@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -28,7 +28,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
-
+gem 'pg', '0.15.1'
 
 # Custom gems
 gem 'devise'
@@ -56,7 +56,7 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
+  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
 

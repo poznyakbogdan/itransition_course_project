@@ -48,7 +48,10 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: course_project_production
-  username: course_project
-  password: <%= ENV['COURSE_PROJECT_DATABASE_PASSWORD'] %>
+  pool: 5
+  timeout: 5000
+  username: bogdan
+  password: 1441297
