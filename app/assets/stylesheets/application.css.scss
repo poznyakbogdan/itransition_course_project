@@ -16,3 +16,15 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "fontello";
+
+//aplication.html
+
+.nav-avatar-image{
+	width: 50px;
+}
+.nav--name-text{
+	height: 50px;
+  padding: 14px 10px;
+  margin: 0px;
+}
