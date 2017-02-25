@@ -5,7 +5,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
     if @user.persisted?
-      sign_in_and_redirect @user, :event => :authentication 
+      puts @user.inspect
+      # sign_in_and_redirect @user, :event => :authentication
+      sign_in @user
+      redirect_to user_path(@user.id)      
       set_flash_message(:notice, :success, :kind => "#{auth.provider}") if is_navigational_format?
     else
       session["devise.data"] = request.env["omniauth.auth"]
