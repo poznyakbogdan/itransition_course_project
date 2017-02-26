@@ -1,0 +1,12 @@
+<div class="container">
+	<div class="table-responsive">
+  	<table class="table">
+    	<% @instructions.each do |i| %>
+				<tr>
+					<td><%= i.name %></td>
+					<td><%= i.video_url %></td>
+				</tr>
+    	<% end %>
+  	</table>
+	</div>
+</div>

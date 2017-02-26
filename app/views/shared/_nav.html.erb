@@ -17,6 +17,9 @@
         <ul class="nav navbar-nav navbar-right">
 					<% if current_user %>
 						<li>
+							<%= link_to "index", user_instructions_path(current_user.id) %>	
+						</li>
+						<li>
 							<%= image_tag current_user.image_url, :class => "img-thumbnail nav-avatar-image" %>	
 						</li>
 						<li>

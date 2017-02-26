@@ -1,3 +1,25 @@
-<p>
-	New instruction
-</p>
+<div class="container">	
+	<% if @instruction.errors.any? %>
+		<div class="bg-danger">
+			<p>errors</p>	
+			<ul>	
+				<% @instruction.errors.each do |e, n| %>
+					<li>
+						<%= "#{e}: #{n}"%>
+					</li>
+				<% end %>
+			</ul>
+		</div>	
+	<% end %>
+	<p>
+		New instruction
+	</p>
+	<%= form_for @instruction, :url => {action: "create"}, 
+														:html => {class: "instruction-form"} do |f| %>
+		<%= f.label :name, "Name" %>
+		<%= f.text_field :name, :class => "form-control" %>
+		<%= f.label :video_url, "Url" %>
+		<%= f.text_field :video_url, :class => "form-control" %>
+		<%= f.submit "Create", :class => "btn btn-primary" %>
+	<% end %>													
+</div>	
