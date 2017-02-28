@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require jquery-ui
  *= require_self
  */
 
@@ -20,6 +21,8 @@
 
 //aplication.html
 
+
+
 .nav-avatar-image{
 	width: 50px;
 }
@@ -27,4 +30,10 @@
 	height: 50px;
   padding: 14px 10px;
   margin: 0px;
+}
+.user-actions-dropdown{
+	margin-top: 10px;
+}
+a:hover{
+	text-decoration: none;
 }

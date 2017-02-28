@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="steps-field col-lg-12">
+		<div id="sortable">
+		  <div class="ui-state-default">
+		  	
+		  	<%= link_to "Edit", new_instruction_step_path(@instruction_id), remote: true %>
+
+		  </div>
+  	</div>
+	</div> 
+	<%= link_to "Create step", new_instruction_step_path(@instruction_id), remote:true, 
+														:class => "instruction-show-link" %>
+</div>
+

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
 	def show
-		@user = current_user
+		@user = User.eager_load(:instructions).where(id: params[:id]).to_a.first
 	end
 end

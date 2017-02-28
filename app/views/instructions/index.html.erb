@@ -5,6 +5,10 @@
 				<tr>
 					<td><%= i.name %></td>
 					<td><%= i.video_url %></td>
+					<td>
+						<%= link_to "show", instruction_path(i.id),
+																:class => "instruction-show-link" %>
+					</td>
 				</tr>
     	<% end %>
   	</table>

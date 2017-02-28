@@ -1,0 +1,15 @@
+<div class="container">
+	<% if notice %>
+		<p class="bg-success">
+			<%= notice %>
+		</p>
+	<% end %>
+	<p>
+		<strong><%= @instruction.name %></strong>	
+	</p>
+	<p>
+		<strong><%= @instruction.video_url %></strong>	
+	</p>
+	<%= link_to "edit",  edit_instruction_path(@instruction.id),
+																:class => "instruction-show-link" %>
+</div>

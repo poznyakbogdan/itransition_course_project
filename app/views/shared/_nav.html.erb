@@ -9,16 +9,17 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">MyApp</a>
+				<ul class="nav navbar-nav navbar-left">
+					<li><%= link_to "Instructions", instructions_path %></li>
+				</ul>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+		
         <ul class="nav navbar-nav navbar-right">
 					<% if current_user %>
-						<li>
-							<%= link_to "index", user_instructions_path(current_user.id) %>	
-						</li>
+						
 						<li>
 							<%= image_tag current_user.image_url, :class => "img-thumbnail nav-avatar-image" %>	
 						</li>
@@ -26,8 +27,26 @@
 							<!-- <p class="nav--name-text"></p> -->
 							<%= link_to current_user.name, user_path(current_user.id) %>
 						</li>
-						<li>
-							<%= link_to "", destroy_user_session_path, :class => "fontello-icon-logout" %>		
+						
+						<li class="dropdown user-actions-dropdown">
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						  	<span class="glyphicon glyphicon-menu-hamburger"></span>	
+						  </button>
+						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						    <li><%= link_to "My records", user_path(current_user.id), 
+						    														:class => "fontello-icon-layers" %>
+						    </li>
+						    <li><%= link_to "New record",  new_instruction_path,
+						    														:class => "fontello-icon-plus-circle-1" %>
+						    	 	
+						    </li>
+						    <li><a href="#">Something else here</a></li>
+						    <li role="separator" class="divider"></li>
+						    <li><%= link_to "Log out", destroy_user_session_path, 
+						    										:class => "fontello-icon-logout" %>
+						    											
+						    </li>
+						  </ul>
 						</li>
 					<% else %>
 	          <li>

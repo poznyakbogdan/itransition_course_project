@@ -1,0 +1,16 @@
+<div class="form-shadov">
+	<div class="container">
+		<div class="row">
+			<%= form_for @step, :url => {action: "create"}, remote: true,
+															:html => {class: "step-form"} do |f|%>
+				<%= f.label :title, "Title" %>
+				<%= f.text_field :title, :class => "form-control" %>
+				<%= f.label :description, "Description" %>
+				<%= f.text_field :description, :class => "form-control" %>
+			
+				<%= f.submit "Create step", :class => "btn btn-primary" %>
+			
+			<% end %>
+		</div>
+	</div>
+</div>

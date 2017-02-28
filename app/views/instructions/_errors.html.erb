@@ -1,0 +1,12 @@
+<% if @instruction.errors.any? %>
+		<div class="bg-danger">
+			<p>errors</p>	
+			<ul>	
+				<% @instruction.errors.each do |e, n| %>
+					<li>
+						<%= "#{e}: #{n}"%>
+					</li>
+				<% end %>
+			</ul>
+		</div>	
+	<% end %>
