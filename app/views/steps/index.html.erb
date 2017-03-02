@@ -1,14 +1,21 @@
 <div class="container">
 	<div class="steps-field col-lg-12">
 		<div id="sortable">
-		  <div class="ui-state-default">
-		  	
-		  	<%= link_to "Edit", new_instruction_step_path(@instruction_id), remote: true %>
-
-		  </div>
+	  	
+	  	<% @steps.each do |s| %>
+				<div class="ui-state-default" data-id="<%= s.id %>" data-pos="<%= s.number %>">
+					<span><%= s.number %></span>
+					<p>
+						<%= s.title %>
+					</p>
+				</div>
+	  	<% end %>
+	  
   	</div>
 	</div> 
 	<%= link_to "Create step", new_instruction_step_path(@instruction_id), remote:true, 
 														:class => "instruction-show-link" %>
+	<%= link_to "Save instruction", save_steps_numbers_path(@instruction_id), remote:true, 
+														:id => "steps-save-link" %>
 </div>
 

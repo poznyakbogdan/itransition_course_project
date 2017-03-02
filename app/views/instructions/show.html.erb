@@ -1,15 +1,27 @@
 <div class="container">
-	<% if notice %>
-		<p class="bg-success">
-			<%= notice %>
+	<div class="row">	
+		<% if notice %>
+			<p class="bg-success">
+				<%= notice %>
+			</p>
+		<% end %>
+		
+		<h1><%= @instruction.name %></h1>	
+		<strong><%= @instruction.video_url %></strong>
+		
+		<p>
+			<strong></strong>	
 		</p>
-	<% end %>
-	<p>
-		<strong><%= @instruction.name %></strong>	
-	</p>
-	<p>
-		<strong><%= @instruction.video_url %></strong>	
-	</p>
-	<%= link_to "edit",  edit_instruction_path(@instruction.id),
-																:class => "instruction-show-link" %>
+		<% @instruction.steps.order(:number).each do |i| %>
+			<div>
+				<h2><%= i.number %> : <%= i.title %></h2>
+				<p>description: <%= i.description %></p>
+				<p>image: <%= i.image %></p>
+			</div>
+		<% end %>
+		<% if current_user %>
+			<%= link_to "edit",  edit_instruction_path(@instruction.id),
+													 :class => "instruction-show-link" %>
+		<% end %>
+	</div>
 </div>

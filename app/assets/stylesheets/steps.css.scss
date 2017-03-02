@@ -31,9 +31,14 @@ $link-text: #777;
  height: 170px; 
  font-size: 4em; 
  text-align: center; 
+ overflow: hidden;
+ }
+ #sortable div p{
+ 	font-size: 11px;
+ 	color: black;
  }
  .form-shadov{
- 	position: absolute;
+ 	position: fixed;
  	top: 0px;
  	left: 0px;
  	width: 100vw;
@@ -45,9 +50,35 @@ $link-text: #777;
  	border: 1px solid $brand-primary;
  	position: absolute;
  	width: 50%;
+ 	padding: 50px 25px 25px;
+ 	border-radius: 5px;
  	height: 80vh;
  	top: 50%;
  	left: 50%;
  	transform-origin: 50% 50%;
  	transform: translate(-50%, -50%);
  }
+ .close-button{
+ 	height: 30px;
+ 	width: 30px;
+ 	border-radius: 5px;
+ 	background: transparent;
+ 	border: 2px solid $brand-danger;
+ 	position: absolute;
+ 	box-sizing: border-box;
+ 	top: -1px;
+ 	right: -1px;
+ 	padding: 5px 6px;
+ }
+ .close-button:hover{
+ 	cursor: pointer;
+ 	background: $brand-danger;
+ 	color: white;
+ }
+.steps-save-link{
+	border-radius: 3px;
+	background: $brand-primary;
+	text-decoration: none;
+	padding: 5px 8px;
+	color: white;
+}

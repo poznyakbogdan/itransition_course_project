@@ -33,7 +33,7 @@ class InstructionsController < ApplicationController
 	end
 
 	def show
-			@instruction = set_instruction
+			@instruction = Instruction.eager_load(:steps).where(id: params[:id]).to_a.first
 	end
 
 	def destroy
@@ -45,7 +45,5 @@ class InstructionsController < ApplicationController
 		params.require(:instruction).permit(:name, :video_url)
 	end
 
-	def set_instruction
-		@instruction = current_user.instructions.find(params[:id])
-	end
+
 end

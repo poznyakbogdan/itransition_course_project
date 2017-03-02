@@ -4,12 +4,16 @@
 			<%= form_for @step, :url => {action: "create"}, remote: true,
 															:html => {class: "step-form"} do |f|%>
 				<%= f.label :title, "Title" %>
-				<%= f.text_field :title, :class => "form-control" %>
+				<%= f.text_field :title, :class => "form-control", :required => true %>
 				<%= f.label :description, "Description" %>
 				<%= f.text_field :description, :class => "form-control" %>
+				<%= f.label :image, "Image" %>
+				<%= f.text_field :image, :class => "form-control" %>
 			
-				<%= f.submit "Create step", :class => "btn btn-primary" %>
-			
+				<%= f.submit "Create step", :class => "btn btn-primary form-close-button" %>
+				<div class="close-button">
+					<span class="glyphicon glyphicon-remove"></span>
+				</div>
 			<% end %>
 		</div>
 	</div>

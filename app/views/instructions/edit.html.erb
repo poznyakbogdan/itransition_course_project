@@ -10,9 +10,29 @@
         <%= f.label :video_url %>
         <%= f.text_field :video_url, class: 'form-control' %>
 
-        <%= f.submit "Save changes", class: "btn btn-primary" %>
-      <% end %>
+        
+      
 
+        <div class="steps-field col-lg-12">
+          <div id="sortable">
+        
+            <% @instruction.steps.each do |s| %>
+              <div class="ui-state-default" data-id="<%= s.id %>" data-pos="<%= s.number %>">
+                <span><%= s.number %></span>
+                <p>
+                  <%= s.title %>
+                </p>
+              </div>
+            <% end %>
+          
+          </div>
+        </div>
+        <%= link_to "Create step", new_instruction_step_path(@instruction.id), remote:true, 
+                            :class => "instruction-show-link" %>
+        <%= f.submit "Save changes", class: "btn btn-primary", 
+        id: "instruction_edit_save_button", href: "/steps/save_steps_numbers.#{@instruction.id}" %> 
+      <% end %> 
+    
     </div>
   </div>
 </div>
