@@ -1,5 +1,5 @@
 class User < ApplicationRecord
- 	has_many :instructions
+ 	has_many :instructions, dependent: :destroy
   devise :omniauthable, :omniauth_providers => [:facebook, :twitter, :vkontakte]
 
   def self.from_omniauth(auth)

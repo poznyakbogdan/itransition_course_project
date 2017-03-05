@@ -14,8 +14,13 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-ui
+//= require cloudinary
+//= require cloudinary/processing 
 //= require turbolinks
 //= require_tree .
+
+//       Configure Cloudinary jQuery plugin
+$.cloudinary.config({"api_key":"686525632959915","cloud_name":"bntu"});
 
 
 $(document).on('turbolinks:load', function() {
@@ -32,10 +37,21 @@ $(document).on('turbolinks:load', function() {
    		$('.form-shadov').remove();
 		});
 
-		$('#steps-save-link, #instruction_edit_save_button').on("click", function(e){
+		$('#steps-save-link').on("click", function(e){
+			e.preventDefault();
 			saveStepsNumbers(e);
 		});
 
+		$('#instruction_edit_save_button').on("click", function(e){
+			e.preventDefault();
+			saveInstruction(e);
+		});
+
+
+		// $('.edit_instruction').submit( function(e){
+		// 	alert('qwwqe');
+		// 	saveStepsNumbers(e);
+		// });
 });
 
 function  setOrderToSteps() {
@@ -46,15 +62,34 @@ function  setOrderToSteps() {
 	 })
 }
 
-function saveStepsNumbers(e){
-	var actionUrl = e.target.getAttribute('href'); 
-	var steps = $('.ui-state-default');
+
+function saveInstruction(e){
+	console.log('12312312');
+	// var actionUrl = e.target.getAttribute('href'); 
+	var actionUrl = $('form.edit_instruction').attr('action');
 	var msg = new Object();
-	msg.message = new Object();
-	steps.each(function(){
-		msg.message[$(this).attr('data-id')] = {
-			number: $(this).attr('data-pos')} 
-	});
+	msg.message = getStepsData();
+	msg.instruction = getInstructionData();
+	console.log(msg.instruction);
+	console.log(msg.message);
+	$.ajax(actionUrl, { 
+		method: "PATCH", 
+		data: msg
+	})
+		.done(function(){
+			console.log('done');
+		});
+}
+
+
+function saveStepsNumbers(e){
+	// console.log('12312312');
+	var actionUrl = e.target.getAttribute('href'); 
+	// var actionUrl = $('form.edit_instruction').attr('action');
+	var msg = new Object();
+	msg.message = getStepsData();
+	// console.log(msg.instruction);
+	// console.log(msg.message);
 	$.ajax(actionUrl, { 
 		method: "POST", 
 		data: msg
@@ -63,4 +98,23 @@ function saveStepsNumbers(e){
 			console.log('done');
 		});
 }
+
+function getStepsData(){
+	var steps = $('.ui-state-default');
+	var data = new Object();
+	steps.each(function(){
+		data[$(this).attr('data-id')] = {
+			number: $(this).attr('data-pos')} 
+	});
+	return data;
+}
+
+function getInstructionData(){
+	data = new Object();
+	data.name = $("[name='instruction[name]']").val();
+	data.video_url = $("[name='instruction[video_url]']").val();
+	return data;
+}
+
+//////////////////////////////////////////////////////////////////////
 

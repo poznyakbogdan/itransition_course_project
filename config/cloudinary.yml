@@ -1,0 +1,8 @@
+development:
+  cloud_name: "bntu"
+  api_key: "686525632959915"
+  api_secret: "_RHBvByMy4bNDe1zG4TlVGtyA74"
+production:
+  cloud_name: "bntu"
+  api_key: "686525632959915"
+  api_secret: "_RHBvByMy4bNDe1zG4TlVGtyA74"

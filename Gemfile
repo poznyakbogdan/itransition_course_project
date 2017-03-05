@@ -40,6 +40,8 @@ gem 'omniauth-vkontakte'
 gem 'bootstrap-sass'
 gem 'fontello-rails'
 gem 'jquery-ui-rails'
+gem 'cloudinary'
+gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

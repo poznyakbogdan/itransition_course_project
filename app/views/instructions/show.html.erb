@@ -16,7 +16,7 @@
 			<div>
 				<h2><%= i.number %> : <%= i.title %></h2>
 				<p>description: <%= i.description %></p>
-				<p>image: <%= i.image %></p>
+				<p>image: <%= cl_image_tag i.image_url %></p>
 			</div>
 		<% end %>
 		<% if current_user %>

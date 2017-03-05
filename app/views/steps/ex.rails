@@ -1,0 +1,27 @@
+<%= form_for @step, :url => {action: "create"}, remote: true,
+				html: { class: "step-form" }, authenticity_token: true do |f| %>
+				<%= f.label :title, "Title" %>
+				<%= f.text_field :title, :class => "form-control", :required => true %>
+				
+				<%= f.label :description, "Description" %>
+				<%= f.text_field :description, :class => "form-control" %>
+				<div class="form_line">
+		      <%= f.label :image, "Image:" %>
+		      <div class="form_controls">
+		        <div class="upload_button_holder">
+		          <%= link_to("Upload", "#", :class => "upload_button") %>
+		          <% if @unsigned %>
+		            <%= f.cl_unsigned_image_upload(:image, @preset_name) %>
+		          <% else %>
+		            <%= f.cl_image_upload(:image, :return_delete_token=>true) %>
+		          <% end %>
+		        </div>
+		        <span class="status"></span>
+		      </div>
+		    </div>
+
+				<%= f.submit "Create step", :class => "btn btn-primary form-close-button" %>
+				<div class="close-button">
+					<span class="glyphicon glyphicon-remove"></span>
+				</div>
+			<% end %>

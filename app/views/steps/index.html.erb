@@ -15,7 +15,7 @@
 	</div> 
 	<%= link_to "Create step", new_instruction_step_path(@instruction_id), remote:true, 
 														:class => "instruction-show-link" %>
-	<%= link_to "Save instruction", save_steps_numbers_path(@instruction_id), remote:true, 
+	<%= link_to "Save instruction", save_steps_numbers_path(@instruction_id), remote: true,  
 														:id => "steps-save-link" %>
 </div>
 

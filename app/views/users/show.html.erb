@@ -27,6 +27,10 @@
 						<%= link_to "edit",  edit_instruction_path(i.id),
 																:class => "instruction-show-link" %>
 					</td>
+					<td>
+						<%= link_to "delete",  instruction_path(i.id),
+						method: :delete, :class => "instruction-show-link btn btn-danger" %>
+					</td>
 				</tr>
     	<% end %>
   	</table>

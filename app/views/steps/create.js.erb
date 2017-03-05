@@ -3,6 +3,7 @@ function createStep () {
 	var stepElement = $(`
 		<div data-id="<%= @step.id %>">
 			<span>` + number + `</span>
+			<%= cl_image_tag @url %>
 			<p>
 				<%= @step.title %>	
 			</p>
