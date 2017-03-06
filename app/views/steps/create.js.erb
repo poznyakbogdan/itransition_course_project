@@ -2,11 +2,17 @@ function createStep () {
 	var number = setNumber();
 	var stepElement = $(`
 		<div data-id="<%= @step.id %>">
-			<span>` + number + `</span>
-			<%= cl_image_tag @url %>
-			<p>
-				<%= @step.title %>	
-			</p>
+			<span class="step-number-text">` + number + `</span>
+			<strong>
+				<%= @step.title %>
+			</strong>
+			<div>
+				<%= link_to(content_tag(:i, "", class: "glyphicon glyphicon-remove"), 
+										instruction_step_path(@step.instruction_id, @step.id), 
+										method: :delete, remote:true, class: "step-delete-link") %>
+			</div>
+			<%= cl_image_tag @url, class: "step-image-preview" %>
+			
 		</div>`
 	);
 	stepElement.addClass('ui-state-default');

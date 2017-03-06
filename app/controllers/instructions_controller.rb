@@ -21,6 +21,7 @@ class InstructionsController < StepsController
 
 	def edit
 		@instruction = set_instruction
+		@steps = @instruction.steps
 	end
 
 	def update

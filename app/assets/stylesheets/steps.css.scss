@@ -23,29 +23,29 @@ $link-text: #777;
  	width: 100%; 
  	min-height: 200px;
 }
-#sortable div {
+#sortable>div {
  margin: 10px 9px 0 5px; 
  padding: 1px; 
  float: left; 
  width: 170px; 
  height: 170px; 
- font-size: 4em; 
- text-align: center; 
- overflow: hidden;
- }
- #sortable div p{
+ text-align: left; 
+ box-sizing: border-box;
+ position: relative;
+}
+#sortable div p{
  	font-size: 11px;
  	color: black;
- }
- .form-shadov{
+}
+.form-shadov{
  	position: fixed;
  	top: 0px;
  	left: 0px;
  	width: 100vw;
  	height: 100vh;
  	background: rgba(0, 0, 0, .5);
- }
- .step-form{
+}
+.step-form{
  	background: white;
  	border: 1px solid $brand-primary;
  	position: absolute;
@@ -57,8 +57,8 @@ $link-text: #777;
  	left: 50%;
  	transform-origin: 50% 50%;
  	transform: translate(-50%, -50%);
- }
- .close-button{
+}
+.close-button{
  	height: 30px;
  	width: 30px;
  	border-radius: 5px;
@@ -69,18 +69,35 @@ $link-text: #777;
  	top: -1px;
  	right: -1px;
  	padding: 5px 6px;
- }
- .close-button:hover{
+}
+.close-button:hover{
  	cursor: pointer;
  	background: $brand-danger;
  	color: white;
- }
+}
 .steps-save-link{
 	border-radius: 3px;
 	background: $brand-primary;
 	text-decoration: none;
 	padding: 5px 8px;
 	color: white;
+}
+.step-delete-link{
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: -5px;
+  right: -9px;
+  font-size: 0.9em;
+  padding: 4px;
+  color: white;
+  background: #d9534f;
+  border-radius: 50%;
+}
+.step-image-preview{
+  width: 160px;
+  margin: 0 auto;
+  display: block;
 }
 
 /////////////////////////////////////////////////////

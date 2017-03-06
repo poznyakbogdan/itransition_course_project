@@ -32,6 +32,21 @@ class StepsController < ApplicationController
 		end
 	end
 
+	def edit
+		
+	end
+
+	def destroy
+		p params
+		@step = Step.find(params[:id])
+		if @step.destroy
+			p 'destroy'
+		else
+			p 'alert'
+		end
+		p @step
+	end
+
 	private
 
 	def step_params

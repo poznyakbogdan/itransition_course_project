@@ -1,7 +1,7 @@
-<div class="container">  
+<div class="container-fluid">  
   <div class="row">
     
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-lg-10 col-lg-offset-1">
       <%= form_for @instruction do |f| %>
         <%= render 'errors' %>
         <%= f.label :name %>
@@ -11,20 +11,8 @@
         <%= f.text_field :video_url, class: 'form-control' %>
 
         
-        <div class="steps-field col-lg-12">
-          <div id="sortable">
-        
-            <% @instruction.steps.each do |s| %>
-              <div class="ui-state-default" data-id="<%= s.id %>" data-pos="<%= s.number %>">
-                <span><%= s.number %></span>
-                <p>
-                  <%= s.title %>
-                </p>
-              </div>
-            <% end %>
-          
-          </div>
-        </div>
+        <%= render 'steps/show_editable_steps' %>
+
         <%= link_to "Create step", new_instruction_step_path(@instruction.id), remote:true, 
                             :class => "instruction-show-link" %>
         <%= f.submit "Save changes", class: "btn btn-primary", 

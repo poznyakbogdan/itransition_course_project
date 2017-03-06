@@ -1,0 +1,20 @@
+<div class="steps-field col-lg-12">
+		<div id="sortable">
+	  	
+	  	<% @steps.order(:number).each do |s| %>
+				<div class="ui-state-default" data-id="<%= s.id %>" data-pos="<%= s.number %>">
+					<span class="step-number-text"><%= s.number %></span>
+					<strong>
+            <%= s.title %>
+          </strong>
+          <%= cl_image_tag s.image, class: "step-image-preview" %>
+					<div>
+						<%= link_to(content_tag(:i, "", class: "glyphicon glyphicon-remove"), \
+												instruction_step_path(s.instruction_id, s.id), 
+                  			:method => :delete, :remote => true, :class => "step-delete-link") %>
+					</div>
+				</div>
+	  	<% end %>
+	  
+  	</div>
+	</div> 
