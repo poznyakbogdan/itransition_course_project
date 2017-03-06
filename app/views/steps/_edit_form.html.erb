@@ -1,0 +1,44 @@
+<div class="form-shadov">
+	<div class="container">
+		<div class="row">
+			
+
+			 <%= form_for(@step, remote: true, :url => {action: "update"},
+										html: { class: "step-form" }) do |f| %>
+		    
+		      
+		      <%= f.label :title, "Name:" %>
+		      <%= f.text_field :title, :class => "form-control" %>
+		      
+		      <%= f.label :description, "Description" %>
+					<%= f.text_field :description, :class => "form-control" %>
+		    
+		    
+		      <%= f.label :image, "Image:" %>
+		    
+		        <div class="upload_button_holder">
+		          <%= link_to("Upload", "#", :class => "upload_button") %>
+		          <% if @unsigned %>
+		            <%= f.cl_unsigned_image_upload(:image, @preset_name) %>
+		          <% else %>
+		            <%= f.cl_image_upload(:image, :return_delete_token=>true) %>
+		          <% end %>
+		        </div>
+		        <span class="status"></span>
+		    
+		    
+		    <div class="form_line">
+		      <div class="form_controls">
+		        <div class="preview"></div>
+		      </div>
+		    </div>
+		    <%= f.submit "Submit Photo" %>
+		        
+		  <% end %>
+
+
+		</div>
+	</div>
+</div>
+
+<%= render 'upload_script' %>

@@ -1,0 +1,19 @@
+$('.form-shadov').remove();
+
+var stepId = "<%= @step.id %>";
+var stepTitle = "<%= @step.title %>";
+var stepImageUrl = "<%= @url %>";
+var stepElement = $("#sortable>[data-id=" + stepId + "]");
+console.log(stepImageUrl);
+
+function updateStep (step) {
+	step.find('strong').text(stepTitle);
+	step.find('img').attr("src", stepImageUrl);		
+}
+
+function setNumber () {
+	var length = $('.ui-state-default').length + 1;
+	return length;
+}
+
+updateStep(stepElement);

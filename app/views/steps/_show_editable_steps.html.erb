@@ -12,6 +12,9 @@
 						<%= link_to(content_tag(:i, "", class: "glyphicon glyphicon-remove"), \
 												instruction_step_path(s.instruction_id, s.id), 
                   			:method => :delete, :remote => true, :class => "step-delete-link") %>
+
+            <%= link_to "edit", edit_instruction_step_path(s.instruction_id, s.id), remote: true,
+             class: "edit-step-link btn btn-primary" %>
 					</div>
 				</div>
 	  	<% end %>

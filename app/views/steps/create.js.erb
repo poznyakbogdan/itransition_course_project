@@ -12,6 +12,8 @@ function createStep () {
 										method: :delete, remote:true, class: "step-delete-link") %>
 			</div>
 			<%= cl_image_tag @url, class: "step-image-preview" %>
+			<%= link_to "edit", edit_instruction_step_path(@step.instruction_id, @step.id), remote: true,
+             class: "edit-step-link btn btn-primary" %>
 			
 		</div>`
 	);

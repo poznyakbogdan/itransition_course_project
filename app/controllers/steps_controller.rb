@@ -33,7 +33,23 @@ class StepsController < ApplicationController
 	end
 
 	def edit
-		
+		@step = Step.find(params[:id])
+	end
+
+	def update
+		@step = Step.find(params[:id])
+    @url = get_image_url
+    p params
+    respond_to do |format|
+	    if @step.update_attributes(step_params)
+	      format.html { redirect_to root_path, notice: 'User was successfully created.' }
+	      format.js   {}
+	      format.json { render json: @step, status: :created, location: @user }
+	    else
+	      format.html { redirect_to root_path, notice: 'dont create' }
+	      format.json { render json: @step.errors, status: :unprocessable_entity }
+	    end
+	  end
 	end
 
 	def destroy
