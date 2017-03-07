@@ -19,8 +19,24 @@ function createStep () {
 	);
 	stepElement.addClass('ui-state-default');
 	$('#sortable').append(stepElement);
-	
+	createStepsInputs(number);
 }
+
+function createStepsInputs(number){
+	
+	var n = number;
+	
+	var container = $('#steps_params');
+	var inputs = $(`
+		<input type="text" value="` + n + `" name="instruction[steps_attributes][`+ n +`][number]" 
+																			id="instruction_steps_attributes_`+ n +`_number" />
+		<input type="hidden" value="<%= @step.id%>" name="instruction[steps_attributes][`+ n +`][id]" 
+																					id="instruction_steps_attributes_`+ n +`_id" />
+	`);
+	container.append(inputs);
+	console.log(container);
+}
+
 function setNumber () {
 	var length = $('.ui-state-default').length + 1;
 	return length;

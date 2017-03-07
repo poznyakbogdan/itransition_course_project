@@ -16,8 +16,11 @@
             <%= link_to "edit", edit_instruction_step_path(s.instruction_id, s.id), remote: true,
              class: "edit-step-link btn btn-primary" %>
 					</div>
+					
 				</div>
 	  	<% end %>
-	  
+  	
   	</div>
 	</div> 
+	<%= link_to "Create step", new_instruction_step_path(instruction_id), remote:true, 
+                            :class => "instruction-show-link" %>

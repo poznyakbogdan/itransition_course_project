@@ -15,6 +15,7 @@ $link-text: #777;
 	// height: 500px;
 	margin: 10px 0;
 	overflow: auto;
+  margin-bottom: 0px;
 }
 #sortable { 
  	list-style-type: none; 
@@ -135,11 +136,10 @@ $link-text: #777;
 
 .back_link { font-weight: bold; display: block; font-size: 16px; margin: 10px 0; }
 
-form { border: 1px solid #ddd; margin: 15px 0; padding: 15px 0; border-radius: 4px; }
-form .form_line { margin-bottom: 20px; }
-form .form_controls { margin-left: 180px; }
-form label { float: left; width: 160px; padding-top: 3px; text-align: right; }
-form .error { color: #c55; margin: 0 10px; }
+// // form { border: 1px solid #ddd; margin: 15px 0; padding: 15px 0; border-radius: 4px; }
+// form .form_line { margin-bottom: 20px; }
+// form .form_controls { margin-left: 180px; }
+// form .error { color: #c55; margin: 0 10px; }
 
 #direct_upload { border: 4px dashed #ccc; }
 

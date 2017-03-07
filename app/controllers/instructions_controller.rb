@@ -1,4 +1,4 @@
-class InstructionsController < StepsController
+class InstructionsController < ApplicationController
 	
 	def index
 		@instructions = Instruction.all
@@ -7,6 +7,8 @@ class InstructionsController < StepsController
 	def new
 		p params
 		@instruction = current_user.instructions.new
+		@categories = Category.select("id, name")
+		p @categories
 	end
 
 	def create
@@ -28,9 +30,10 @@ class InstructionsController < StepsController
 		@instruction = Instruction.find(params[:id])
     p params
     if @instruction.update_attributes(instruction_params)
-      # redirect_to instruction_path(@instruction.id), :notice => "successfully update!" 
-    	save_steps_numbers
+      redirect_to instruction_path(@instruction.id), :notice => "successfully update!" 
+    	# save_steps_numbers
     else
+    	puts @instruction.errors
       render 'edit'
     end
 	end
@@ -52,7 +55,10 @@ class InstructionsController < StepsController
 	private
 
 	def instruction_params
-		params.require(:instruction).permit(:name, :video_url)
+		params.require(:instruction).permit(
+			:name, :video_url, :category_id, 
+			steps_attributes: [:id, :number]
+		)
 	end
 
 

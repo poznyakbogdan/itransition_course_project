@@ -11,6 +11,7 @@ class StepsController < ApplicationController
 
 	def save_steps_numbers
 		steps = params[:message]
+		p 'doshlo!!'
 		p params
 		Step.transaction do
 			steps.each do |key, value|

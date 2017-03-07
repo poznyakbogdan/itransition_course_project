@@ -10,6 +10,20 @@
 			<%= f.text_field :name, :class => "form-control" %>
 			<%= f.label :video_url, "Url" %>
 			<%= f.text_field :video_url, :class => "form-control" %>
+			<!-- <label for="speed">Select a category</label>
+	    <select name="speed" id="speed">
+	      <option>Slower</option>
+	      <option>Slow</option>
+	      <option selected="selected">Medium</option>
+	      <option>Fast</option>
+	    </select>
+ -->
+	    <%= f.label :category_id, "Select category" %>
+	    <%= f.select :category_id, id: "speed" do %>
+				<%= @categories.each do |c| %>
+					<%= content_tag :option, c.name, value: c.id %>
+				<% end %>
+	    <% end %>
 		
 			<%= f.submit "Create steps", :class => "btn btn-primary" %>
 		<% end %>		

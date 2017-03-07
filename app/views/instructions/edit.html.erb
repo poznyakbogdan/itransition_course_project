@@ -11,12 +11,19 @@
         <%= f.text_field :video_url, class: 'form-control' %>
 
         
-        <%= render 'steps/show_editable_steps' %>
+        <%= render 'steps/show_editable_steps', :instruction_id => @instruction.id, 
+                                                :@steps => @instruction.steps %>
 
-        <%= link_to "Create step", new_instruction_step_path(@instruction.id), remote:true, 
-                            :class => "instruction-show-link" %>
+        <div id="steps_params">      
+        
+          <%= f.fields_for :steps do |step_form| %>
+            <%= step_form.text_field :number %>
+          <% end %>
+        </div>
         <%= f.submit "Save changes", class: "btn btn-primary", 
-        id: "instruction_edit_save_button", href: "/steps/save_steps_numbers.#{@instruction.id}" %> 
+        id: "instruction_edit_save_button1", href: "/steps/save_steps_numbers.#{@instruction.id}" %> 
+        <%= link_to "delete",  instruction_path(@instruction.id),
+            method: :delete, :class => "btn btn-danger instruction-edit-delete-link" %>
       <% end %> 
     
     </div>

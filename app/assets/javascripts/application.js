@@ -14,6 +14,8 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jquery-ui
+//= require instructions
+//= require steps
 //= require cloudinary
 //= require cloudinary/processing 
 //= require turbolinks
@@ -47,12 +49,29 @@ $(document).on('turbolinks:load', function() {
 			saveInstruction(e);
 		});
 
+		$('#instruction_edit_save_button1').on("click", function(e){
+			if (!$(this).hasClass('act')) e.preventDefault();
+				alert('34234');
+				updateSteps();
+				alert('34234');
+			$(".edit_instruction").trigger('submit');
+			
+		});
 
 		// $('.edit_instruction').submit( function(e){
 		// 	alert('qwwqe');
 		// 	saveStepsNumbers(e);
 		// });
 });
+
+function updateSteps () {
+	var data = getStepsData();
+	for (var key in data){
+		var stepId = key;
+		$('#steps_params>input[value='+ stepId +']').prev().attr('value', data[key].number);
+	}
+	
+}
 
 function  setOrderToSteps() {
 	 var steps = $('#sortable>.ui-state-default');
