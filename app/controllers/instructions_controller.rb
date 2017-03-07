@@ -2,6 +2,7 @@ class InstructionsController < ApplicationController
 	
 	def index
 		@instructions = Instruction.all
+		@categories = Category.select("id, name")
 	end
 
 	def new
@@ -24,6 +25,7 @@ class InstructionsController < ApplicationController
 	def edit
 		@instruction = set_instruction
 		@steps = @instruction.steps
+		@categories = Category.select("id, name")
 	end
 
 	def update
@@ -40,6 +42,7 @@ class InstructionsController < ApplicationController
 
 	def show
 			@instruction = Instruction.eager_load(:steps).where(id: params[:id]).to_a.first
+			@category = Category.find(@instruction.category_id)
 	end
 
 	def destroy

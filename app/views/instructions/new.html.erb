@@ -10,14 +10,7 @@
 			<%= f.text_field :name, :class => "form-control" %>
 			<%= f.label :video_url, "Url" %>
 			<%= f.text_field :video_url, :class => "form-control" %>
-			<!-- <label for="speed">Select a category</label>
-	    <select name="speed" id="speed">
-	      <option>Slower</option>
-	      <option>Slow</option>
-	      <option selected="selected">Medium</option>
-	      <option>Fast</option>
-	    </select>
- -->
+			 <input id="tag1" value="alpha,beta,gamma" />
 	    <%= f.label :category_id, "Select category" %>
 	    <%= f.select :category_id, id: "speed" do %>
 				<%= @categories.each do |c| %>
@@ -32,3 +25,8 @@
 	
 	</div>												
 </div>	
+<script type="text/javascript">
+	$('#tag1').tagsInput({
+	   
+	});
+</script>

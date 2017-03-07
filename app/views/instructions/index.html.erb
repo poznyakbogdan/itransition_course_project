@@ -4,6 +4,7 @@
     	<% @instructions.each do |i| %>
 				<tr>
 					<td><%= i.name %></td>
+					<td><%= get_category(i).name %></td>
 					<td><%= i.video_url %></td>
 					<td>
 						<%= link_to "show", instruction_path(i.id),

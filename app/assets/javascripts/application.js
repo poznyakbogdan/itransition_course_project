@@ -16,6 +16,8 @@
 //= require jquery-ui
 //= require instructions
 //= require steps
+//= require bootstrap-tokenfield.min
+//= require jquery.tagsinput.min
 //= require cloudinary
 //= require cloudinary/processing 
 //= require turbolinks
@@ -51,9 +53,7 @@ $(document).on('turbolinks:load', function() {
 
 		$('#instruction_edit_save_button1').on("click", function(e){
 			if (!$(this).hasClass('act')) e.preventDefault();
-				alert('34234');
 				updateSteps();
-				alert('34234');
 			$(".edit_instruction").trigger('submit');
 			
 		});

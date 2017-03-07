@@ -9,17 +9,23 @@
 
         <%= f.label :video_url %>
         <%= f.text_field :video_url, class: 'form-control' %>
-
+        
+        <%= f.label :category_id, "Change category" %>
+        <%= f.select :category_id, id: "speed" do %>
+          <% @categories.each do |c| %>
+            <%= content_tag :option, c.name, value: c.id %>
+          <% end %>
+        <% end %>
         
         <%= render 'steps/show_editable_steps', :instruction_id => @instruction.id, 
                                                 :@steps => @instruction.steps %>
 
         <div id="steps_params">      
-        
           <%= f.fields_for :steps do |step_form| %>
             <%= step_form.text_field :number %>
           <% end %>
         </div>
+
         <%= f.submit "Save changes", class: "btn btn-primary", 
         id: "instruction_edit_save_button1", href: "/steps/save_steps_numbers.#{@instruction.id}" %> 
         <%= link_to "delete",  instruction_path(@instruction.id),
@@ -29,3 +35,6 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('option[value="<%= @instruction.category_id %>"]').attr('selected', 'selected');
+</script>
