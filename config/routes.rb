@@ -2,6 +2,8 @@ Rails.application.routes.draw do
     
   root 'home#index'
   
+  get 'tags/:tag', :to => "instructions#index", as: :tag
+
 	devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 	devise_scope :user do

@@ -18,6 +18,7 @@
 //= require steps
 //= require bootstrap-tokenfield.min
 //= require jquery.tagsinput.min
+//= require ckeditor/init
 //= require cloudinary
 //= require cloudinary/processing 
 //= require turbolinks

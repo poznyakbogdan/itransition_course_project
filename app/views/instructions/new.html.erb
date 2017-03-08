@@ -10,7 +10,13 @@
 			<%= f.text_field :name, :class => "form-control" %>
 			<%= f.label :video_url, "Url" %>
 			<%= f.text_field :video_url, :class => "form-control" %>
-			 <input id="tag1" value="alpha,beta,gamma" />
+			
+			 <!-- <input id="tag1" value="alpha,beta,gamma" /> -->
+	    c
+			<%= f.label :tag_list, "Tags" %>
+			<%= f.text_field :tag_list, :class => "form-control" %>
+			
+
 	    <%= f.label :category_id, "Select category" %>
 	    <%= f.select :category_id, id: "speed" do %>
 				<%= @categories.each do |c| %>
@@ -26,7 +32,26 @@
 	</div>												
 </div>	
 <script type="text/javascript">
-	$('#tag1').tagsInput({
-	   
-	});
+	
+  $('#instruction_tag_list').tagsInput({
+    'onAddTag':function (e) {
+       var tags = $('#instruction_tag_list_tagsinput>span.tag>span');
+       console.log(tags);
+       var tagsText = [];
+       $(tags).each(function () {
+         tagsText.push($(this).text().replace(/..$/,''));
+       });
+       $('#instruction_tag_list').attr('value', tagsText.join(','));
+     }, 
+    'onRemoveTag':function (e) {
+       var tags = $('#instruction_tag_list_tagsinput>span.tag>span');
+       console.log(tags);
+       var tagsText = [];
+       $(tags).each(function () {
+         tagsText.push($(this).text().replace(/..$/,''));
+       });
+       $('#instruction_tag_list').attr('value', tagsText.join(','));
+     }, 
+  });
+
 </script>

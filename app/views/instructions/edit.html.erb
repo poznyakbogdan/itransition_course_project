@@ -17,6 +17,11 @@
           <% end %>
         <% end %>
         
+        
+        <%= f.label :tag_list, "Tags" %>
+        <%= f.text_field :tag_list, :class => "form-control",
+                          value: @instruction_tags.to_s %>
+
         <%= render 'steps/show_editable_steps', :instruction_id => @instruction.id, 
                                                 :@steps => @instruction.steps %>
 
@@ -37,4 +42,26 @@
 </div>
 <script type="text/javascript">
   $('option[value="<%= @instruction.category_id %>"]').attr('selected', 'selected');
+
+  $('#instruction_tag_list').tagsInput({
+    'onAddTag':function (e) {
+       var tags = $('#instruction_tag_list_tagsinput>span.tag>span');
+       console.log(tags);
+       var tagsText = [];
+       $(tags).each(function () {
+         tagsText.push($(this).text().replace(/..$/,''));
+       });
+       $('#instruction_tag_list').attr('value', tagsText.join(','));
+     }, 
+    'onRemoveTag':function (e) {
+       var tags = $('#instruction_tag_list_tagsinput>span.tag>span');
+       console.log(tags);
+       var tagsText = [];
+       $(tags).each(function () {
+         tagsText.push($(this).text().replace(/..$/,''));
+       });
+       $('#instruction_tag_list').attr('value', tagsText.join(','));
+     }, 
+  });
+
 </script>

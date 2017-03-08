@@ -1,1 +1,3 @@
 $('#sortable>[data-id="<%= @step.id %>"]').remove();
+$('input[type="hidden"][value="<%= @step.id %>"]').prev().remove();
+$('input[type="hidden"][value="<%= @step.id %>"]').remove();

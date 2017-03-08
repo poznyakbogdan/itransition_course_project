@@ -1,10 +1,18 @@
 <div class="container">
 	<div class="table-responsive">
+  	<% tag_cloud(Instruction.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+		  <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+		<% end %>
   	<table class="table">
     	<% @instructions.each do |i| %>
 				<tr>
 					<td><%= i.name %></td>
 					<td><%= get_category(i).name %></td>
+					<td>
+						<% i.tags.each do |t| %>
+							<span><%= t.name %></span>
+						<% end %>
+					</td>
 					<td><%= i.video_url %></td>
 					<td>
 						<%= link_to "show", instruction_path(i.id),

@@ -11,7 +11,10 @@
 		<strong><%= @instruction.video_url %></strong>
 		
 		<p>
-			<strong></strong>	
+			Tags: 
+				<% @instruction.tags.each do |t| %>
+					<%= t.name %>
+				<% end %>	
 		</p>
 		<% @instruction.steps.order(:number).each do |i| %>
 			<div>
@@ -20,7 +23,7 @@
 				<p>image: <%= cl_image_tag i.image_url %></p>
 			</div>
 		<% end %>
-		<% if current_user %>
+		<% if current_user.id == @instruction.user_id %>
 			<%= link_to "edit",  edit_instruction_path(@instruction.id),
 													 :class => "instruction-edit-link" %>
 		<% end %>
