@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
     
+  get 'comments/new'
+
+  get 'comments/index'
+
+  get 'comments/create'
+
+  get 'comments/destroy'
+
   root 'home#index'
   
   get 'tags/:tag', :to => "instructions#index", as: :tag
@@ -11,9 +19,12 @@ Rails.application.routes.draw do
 	  get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
 	end
 
+
 	resources :users, only: :show 
 	resources :instructions do 
-		resources :steps		
+		resources :steps do
+			resources :comments
+		end		
 	end
 	
 	post '/steps/save_steps_numbers', to: 'steps#save_steps_numbers', as: :save_steps_numbers
