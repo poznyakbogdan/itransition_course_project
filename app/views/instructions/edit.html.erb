@@ -31,8 +31,7 @@
           <% end %>
         </div>
 
-        <%= f.submit "Save changes", class: "btn btn-primary", 
-        id: "instruction_edit_save_button1", href: "/steps/save_steps_numbers.#{@instruction.id}" %> 
+        <%= f.submit "Save changes", class: "btn btn-primary", id: "instruction_edit_save_button1" %> 
         <%= link_to "delete",  instruction_path(@instruction.id),
             method: :delete, :class => "btn btn-danger instruction-edit-delete-link" %>
       <% end %> 
@@ -40,28 +39,7 @@
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
   $('option[value="<%= @instruction.category_id %>"]').attr('selected', 'selected');
-
-  $('#instruction_tag_list').tagsInput({
-    'onAddTag':function (e) {
-       var tags = $('#instruction_tag_list_tagsinput>span.tag>span');
-       console.log(tags);
-       var tagsText = [];
-       $(tags).each(function () {
-         tagsText.push($(this).text().replace(/..$/,''));
-       });
-       $('#instruction_tag_list').attr('value', tagsText.join(','));
-     }, 
-    'onRemoveTag':function (e) {
-       var tags = $('#instruction_tag_list_tagsinput>span.tag>span');
-       console.log(tags);
-       var tagsText = [];
-       $(tags).each(function () {
-         tagsText.push($(this).text().replace(/..$/,''));
-       });
-       $('#instruction_tag_list').attr('value', tagsText.join(','));
-     }, 
-  });
-
 </script>

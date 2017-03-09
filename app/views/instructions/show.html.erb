@@ -5,23 +5,15 @@
 				<%= notice %>
 			</p>
 		<% end %>
+	
+		<%= render 'instruction_data', :instruction => @instruction, :category => @category %>
 		
-		<h1><%= @instruction.name %></h1>	
-		<strong><%= @category.name %></strong>
-		<strong><%= @instruction.video_url %></strong>
+		<%= render 'tags', :tags => @instruction.tags %>
 		
-		<p>
-			Tags: 
-				<% @instruction.tags.each do |t| %>
-					<%= t.name %>
-				<% end %>	
-		</p>
 		<% @instruction.steps.order(:number).each do |i| %>
 			<div>
-				<h2><%= i.number %> : <%= i.title %></h2>
-				<p>description: <%= i.description %></p>
-				<p>image: <%= cl_image_tag i.image_url %></p>
-				
+		
+				<%= render 'steps/steps_data', :step => i %>
 				<%= render 'comments/show_comment', :comments => i.comments %>
 				
 				<% if current_user %>

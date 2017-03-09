@@ -3,27 +3,20 @@
   	<% if notice %>
 			<%= notice %>
 		<% end %>	
-  	<table class="table">
-				<tr>
-					<td><span>Name</span></td>
-					<td><%= @user.name %></td>
-				</tr>
-				<tr>
-					<td><span>Provider</span></td>
-					<td><%= @user.provider %></td>
-				</tr>
-  		 	 
+  	
+  	<table class="table">	
+  		 <%= render 'info', :user => @user %>
   	</table>
+
   	<table class="table">
     	<% @instructions.each do |i| %>
 				<tr>
-					<td><%= i.name %></td>
+					
+					<%= render 'instructions/preview', :instruction => i %>
+					
 					<td>
-						<% i.tags.each do |t| %>
-							<span><%= t.name %></span>
-						<% end %>
+						<%= render 'instructions/tags', :tags => i.tags %>
 					</td>
-					<td><%= i.video_url %></td>
 					<td>
 						<%= link_to "show", instruction_path(i.id),
 																:class => "instruction-show-link" %>

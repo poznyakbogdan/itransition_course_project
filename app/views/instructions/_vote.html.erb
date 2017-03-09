@@ -1,0 +1,11 @@
+<div class="instruction--vote-group">
+	<%= link_to like_instruction_path(instruction), method: :put do %>
+		<span>Like</span>
+		<span><%= instruction.cached_votes_up %></span>
+	<% end %>
+
+	<%= link_to dislike_instruction_path(instruction), method: :put do %>
+		<span>Dislike</span>
+		<span><%= instruction.cached_votes_down %></span>
+	<% end %>
+</div>
