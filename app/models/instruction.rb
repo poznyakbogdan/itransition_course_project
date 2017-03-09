@@ -9,4 +9,5 @@ class Instruction < ApplicationRecord
 	accepts_nested_attributes_for :steps
 
 	acts_as_taggable
+	acts_as_votable
 end

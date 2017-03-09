@@ -1,12 +1,14 @@
 class InstructionsController < ApplicationController
 	
+	# before_action :set_instruction, only: [:upvote, :downvote]
+
 	def index
 		if params[:tag]
-			@instructions = Instruction.tagged_with(params[:tag]).eager_load(:tags)
+			@instructions = Instruction.tagged_with(params[:tag]).eager_load(:tags, :category).order(:cached_votes_score => :desc)
 		else		
-			@instructions = Instruction.all.eager_load(:tags)
+			@instructions = Instruction.all.eager_load(:tags, :category).order(:cached_votes_score => :desc)
 		end	
-		@categories = Category.select("id, name")
+		# @categories = Category.select("id, name")
 	end
 
 	def new
@@ -61,6 +63,26 @@ class InstructionsController < ApplicationController
 		end	
 	end
 
+	def upvote
+		@instruction = Instruction.find(params[:id])
+		if current_user.liked? @instruction
+			@instruction.unliked_by current_user
+		else
+			@instruction.upvote_from current_user
+		end
+		redirect_to instructions_path
+	end
+
+	def downvote
+		@instruction = Instruction.find(params[:id])
+		if current_user.disliked? @instruction
+			@instruction.undisliked_by current_user
+		else
+			@instruction.downvote_from current_user
+		end
+		redirect_to instructions_path
+	end
+
 	private
 
 	def parse_tags
@@ -76,6 +98,10 @@ class InstructionsController < ApplicationController
 			:name, :video_url, :category_id, :tag_list,
 			steps_attributes: [:id, :number]
 		)
+	end
+
+	def instructions_redirect
+		redirect_to instructions_path
 	end
 
 

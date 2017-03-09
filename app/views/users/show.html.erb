@@ -15,10 +15,14 @@
   		 	 
   	</table>
   	<table class="table">
-    	<% @user.instructions.each do |i| %>
+    	<% @instructions.each do |i| %>
 				<tr>
 					<td><%= i.name %></td>
-					<td><%= i.tag_list %></td>
+					<td>
+						<% i.tags.each do |t| %>
+							<span><%= t.name %></span>
+						<% end %>
+					</td>
 					<td><%= i.video_url %></td>
 					<td>
 						<%= link_to "show", instruction_path(i.id),

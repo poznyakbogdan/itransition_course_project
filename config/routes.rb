@@ -22,6 +22,10 @@ Rails.application.routes.draw do
 
 	resources :users, only: :show 
 	resources :instructions do 
+		member do
+			put "like" => "instructions#upvote"
+			put "dislike" => "instructions#downvote"
+		end
 		resources :steps do
 			resources :comments
 		end		
