@@ -6,10 +6,11 @@ class InstructionsController < ApplicationController
 
 	def index
 		if params[:tag]
-			@instructions = Instruction.tagged_with(params[:tag]).eager_load(:tags, :category).order(:cached_votes_score => :desc)
+			@instructions = Instruction.paginate(:page => params[:page]).tagged_with(params[:tag]).eager_load(:tags, :category).order(:cached_votes_score => :desc)
 		else		
-			@instructions = Instruction.all.eager_load(:tags, :category).order(:cached_votes_score => :desc)
+			@instructions = Instruction.all.paginate(:page => params[:page]).eager_load(:tags, :category).order(:cached_votes_score => :desc)
 		end	
+		# @instruction.paginate(:page => params[:page])
 		# @categories = Category.select("id, name")
 	end
 
@@ -22,6 +23,7 @@ class InstructionsController < ApplicationController
 
 	def create
 		@instruction = current_user.instructions.new instruction_params
+		authorize! :create, @instruction
 		# p params	
 		if @instruction.save 
 		 redirect_to instruction_steps_path(@instruction.id), :notice => "creating steps!" 
@@ -55,6 +57,7 @@ class InstructionsController < ApplicationController
 			p current_user
 			@instruction = Instruction.eager_load(:steps, :tags).where(id: params[:id]).to_a.first
 			@category = Category.find(@instruction.category_id)
+			@comments = Comment.where(step_id: @instruction.steps.ids).eager_load(:user).to_a
 	end
 
 	def destroy

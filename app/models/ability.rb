@@ -5,13 +5,15 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
     # can :read, :all
-      user ||= User.new # guest user (not logged in)
+      user ||= User.new 
       if user.admin?
         can :manage, :all
       else
         can :read, :all
-        can :create, Instruction
-        can :create, Comment
+
+        can :create, Instruction do |instruction|
+            user.id
+        end
 
         can :update, Instruction do |instruction|
           instruction.user == user
@@ -21,6 +23,10 @@ class Ability
           instruction.user == user
         end
     
+        can :create, Comment do |comment|
+            user.id
+        end
+
         can :update, Comment do |comment|
           comment.user == user
         end
@@ -30,5 +36,6 @@ class Ability
         end
     
       end    
+
   end
 end

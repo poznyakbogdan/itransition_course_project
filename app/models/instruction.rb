@@ -10,4 +10,7 @@ class Instruction < ApplicationRecord
 
 	acts_as_taggable
 	acts_as_votable
+
+	self.per_page = 10
+
 end

@@ -12,15 +12,15 @@
 		
 		<%= render 'vote', :instruction => @instruction %>
 		
-		<% @instruction.steps.order(:number).each do |i| %>
+		<% (@instruction.steps.sort {|x,y| x.number <=> y.number}).each do |i| %>
 			<div>
 		
 				<%= render 'steps/steps_data', :step => i %>
 				
 				<div class="instruction--step_<%= i.id %>--comments-container">
 					
-					<% i.comments.each do |c| %>
-						<%= render 'comments/show_comment', :comment => c %>
+					<% (@comments.select {|c| c.step_id == i.id}).each do |comment| %>
+						<%= render 'comments/show_comment', :comment => comment %>
 					<% end %>
 				
 				</div>
@@ -35,7 +35,6 @@
 			</div>
 		<% end %>
 
-		<% #if current_user && current_user.id == @instruction.user_id %>
 		<% if can? :update, @instruction %>	
 			<%= link_to "edit",  edit_instruction_path(@instruction.id),
 													 :class => "instruction-edit-link" %>
