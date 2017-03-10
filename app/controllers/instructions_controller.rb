@@ -1,5 +1,7 @@
 class InstructionsController < ApplicationController
 	
+	# load_and_authorize_resource :through => :current_user
+	load_and_authorize_resource param_method: :instruction_params
 	# before_action :set_instruction, only: [:upvote, :downvote]
 
 	def index
@@ -29,7 +31,8 @@ class InstructionsController < ApplicationController
 	end
 
 	def edit
-		@instruction = set_instruction
+		# @instruction = set_instruction
+		@instruction = Instruction.find(params[:id])
 		@steps = @instruction.steps
 		@categories = Category.select("id, name")
 		@instruction_tags = parse_tags
@@ -37,6 +40,7 @@ class InstructionsController < ApplicationController
 
 	def update
 		@instruction = Instruction.find(params[:id])
+    authorize! :update, @instruction
     p params
     if @instruction.update_attributes(instruction_params)
       redirect_to instruction_path(@instruction.id), :notice => "successfully update!" 
@@ -55,6 +59,7 @@ class InstructionsController < ApplicationController
 
 	def destroy
 		@instruction = Instruction.eager_load(:steps).where(id: params[:id]).to_a.first
+		authorize! :destroy, @instruction
 		if @instruction.destroy
 			puts "successfully"
 			redirect_to user_path current_user.id
@@ -70,7 +75,6 @@ class InstructionsController < ApplicationController
 		else
 			@instruction.upvote_from current_user
 		end
-		redirect_to instructions_path
 	end
 
 	def downvote
@@ -80,7 +84,6 @@ class InstructionsController < ApplicationController
 		else
 			@instruction.downvote_from current_user
 		end
-		redirect_to instructions_path
 	end
 
 	private
@@ -104,5 +107,8 @@ class InstructionsController < ApplicationController
 		redirect_to instructions_path
 	end
 
+	def my_sanitizer
+    params.require(:instruction).permit(:name)
+  end
 
 end

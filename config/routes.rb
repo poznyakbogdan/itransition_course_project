@@ -30,7 +30,6 @@ Rails.application.routes.draw do
 			resources :comments
 		end		
 	end
-	
 	post '/steps/save_steps_numbers', to: 'steps#save_steps_numbers', as: :save_steps_numbers
 
 end

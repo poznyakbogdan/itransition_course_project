@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
   def create
   	@step = Step.find(params[:step_id])
   	user_id = params[:user_id]
-  	@step.comments.create(content: params[:comment][:content], user_id: user_id)
-  	p Comment.last
-  	redirect_to instruction_path params[:instruction_id]
+  	@comment = @step.comments.create(content: params[:comment][:content], user_id: user_id)
+  	# p @comment
+  	# redirect_to instruction_path params[:instruction_id]
   end
 
   def destroy

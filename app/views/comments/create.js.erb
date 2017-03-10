@@ -1,0 +1,4 @@
+$('.instruction--step_<%= @step.id %>--comments-container').append(`
+	<%= render 'show_comment', :comment => @comment %>
+`);
+$('.instruction--step_<%= @step.id %>--comment-form-container textarea').val("");

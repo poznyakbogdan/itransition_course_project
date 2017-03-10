@@ -9,6 +9,7 @@
   	</table>
 
   	<table class="table">
+
     	<% @instructions.each do |i| %>
 				<tr>
 					
@@ -18,17 +19,25 @@
 						<%= render 'instructions/tags', :tags => i.tags %>
 					</td>
 					<td>
+						<%= render 'instructions/vote', :instruction => i %>
+					</td>
+					<td>
 						<%= link_to "show", instruction_path(i.id),
 																:class => "instruction-show-link" %>
 					</td>
-					<td>
-						<%= link_to "edit",  edit_instruction_path(i.id),
-																:class => "instruction-show-link" %>
-					</td>
-					<td>
-						<%= link_to "delete",  instruction_path(i.id),
-						method: :delete, :class => "instruction-show-link btn btn-danger" %>
-					</td>
+					<% if @have_access %>	
+						<%= p can? :update, i %>
+						<td>
+							<%= link_to "edit",  edit_instruction_path(i.id),
+																	:class => "instruction-show-link" %>
+						</td>
+					<% end %>	
+					<% if @have_access %>	
+						<td>
+							<%= link_to "delete",  instruction_path(i.id),
+							method: :delete, :class => "instruction-show-link btn btn-danger" %>
+						</td>
+					<% end %>	
 				</tr>
     	<% end %>
   	</table>

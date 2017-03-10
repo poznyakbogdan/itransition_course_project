@@ -1,5 +1,5 @@
 
-<%= form_for([step, step.comments.build], 
+<%= form_for([step, step.comments.build], remote: true,
 url: instruction_step_comments_path(step.instruction_id, step.id, :user_id => user_id)) do |f| %>
 	
 	<%= f.label :content %>

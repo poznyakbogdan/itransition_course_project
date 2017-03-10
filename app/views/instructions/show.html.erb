@@ -10,14 +10,24 @@
 		
 		<%= render 'tags', :tags => @instruction.tags %>
 		
+		<%= render 'vote', :instruction => @instruction %>
+		
 		<% @instruction.steps.order(:number).each do |i| %>
 			<div>
 		
 				<%= render 'steps/steps_data', :step => i %>
-				<%= render 'comments/show_comment', :comments => i.comments %>
+				
+				<div class="instruction--step_<%= i.id %>--comments-container">
+					
+					<% i.comments.each do |c| %>
+						<%= render 'comments/show_comment', :comment => c %>
+					<% end %>
+				
+				</div>
 				
 				<% if current_user %>
-					<div>
+					
+					<div class="instruction--step_<%= i.id %>--comment-form-container">
 						<%= render 'comments/form', :user_id => current_user.id, 
 																				:step => i, :instruction_id => @instruction.id %>
 					</div>
@@ -25,7 +35,8 @@
 			</div>
 		<% end %>
 
-		<% if current_user.id == @instruction.user_id %>
+		<% #if current_user && current_user.id == @instruction.user_id %>
+		<% if can? :update, @instruction %>	
 			<%= link_to "edit",  edit_instruction_path(@instruction.id),
 													 :class => "instruction-edit-link" %>
 		<% end %>

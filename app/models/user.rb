@@ -15,6 +15,7 @@ class User < ApplicationRecord
 	  end
 	end
 
+
 	private
 	def self.default_email
 		""
