@@ -37,7 +37,7 @@ class InstructionsController < ApplicationController
 		@instruction = Instruction.find(params[:id])
 		@steps = @instruction.steps
 		@categories = Category.select("id, name")
-		@instruction_tags = parse_tags
+		@instruction_tags = parse_tags(@instruction.tags)
 	end
 
 	def update
@@ -71,6 +71,14 @@ class InstructionsController < ApplicationController
 		end	
 	end
 
+	def tag_name_list
+		tags = ActsAsTaggableOn::Tag.all.select("name").order(:name)
+		# p @tags
+		respond_to do |format|
+			format.json { render json: tags }
+		end
+	end
+
 	def upvote
 		@instruction = Instruction.find(params[:id])
 		if current_user.liked? @instruction
@@ -91,12 +99,12 @@ class InstructionsController < ApplicationController
 
 	private
 
-	def parse_tags
+	def parse_tags(tags)
 		result = []
-		@instruction.tags.each do |t|
+		tags.each do |t|
 			result.push(t.name)
 		end
-		result.join(',')
+		 result.join(',')
 	end
 
 	def instruction_params

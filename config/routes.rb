@@ -31,5 +31,6 @@ Rails.application.routes.draw do
 		end		
 	end
 	post '/steps/save_steps_numbers', to: 'steps#save_steps_numbers', as: :save_steps_numbers
+	post '/instructions/tags', to: 'instructions#tag_name_list', as: :get_tags_list
 
 end

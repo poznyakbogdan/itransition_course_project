@@ -13,7 +13,7 @@
 												instruction_step_path(s.instruction_id, s.id), 
                   			:method => :delete, :remote => true, :class => "step-delete-link") %>
 
-            <%= link_to "edit", edit_instruction_step_path(s.instruction_id, s.id), remote: true,
+            <%= link_to t("step.edit"), edit_instruction_step_path(s.instruction_id, s.id), remote: true,
              class: "edit-step-link btn btn-primary" %>
 					</div>
 					
@@ -22,5 +22,5 @@
   	
   	</div>
 	</div> 
-	<%= link_to "Create step", new_instruction_step_path(instruction_id), remote:true, 
-                            :class => "instruction-show-link" %>
+	<%= link_to t("step.create"), new_instruction_step_path(instruction_id), 
+																						remote:true, :class => "instruction-show-link" %>

@@ -6,28 +6,30 @@
 		</p>
 		<%= form_for @instruction, :url => {action: "create"}, 
 															:html => {class: "instruction-form"} do |f| %>
-			<%= f.label :name, "Name" %>
+			<%= f.label :name, t("instruction.name") %>
 			<%= f.text_field :name, :class => "form-control" %>
 		
-			<%= f.label :video_url, "Url" %>
+			<%= f.label :video_url, t("instruction.video") %>
 			<%= f.text_field :video_url, :class => "form-control" %>
 
 	
-			<%= f.label :tag_list, "Tags" %>
-			<%= f.text_field :tag_list, :class => "form-control" %>
+			<%= f.label :tag_list, t("instruction.tags.title") %>
+			<%= f.text_field :tag_list, :class => "form-control", :href => get_tags_list_path %>
 			
 
-	    <%= f.label :category_id, "Select category" %>
+	    <%= f.label :category_id, t("instruction.category.select") %>
 	    <%= f.select :category_id, id: "speed" do %>
 				<%= @categories.each do |c| %>
 					<%= content_tag :option, c.name, value: c.id %>
 				<% end %>
 	    <% end %>
 		
-			<%= f.submit "Create steps", :class => "btn btn-primary" %>
+			<%= f.submit t("instruction.create_steps"), :class => "btn btn-primary" %>
 		<% end %>		
 	</div>
 	<div class="row">
 	
 	</div>												
 </div>	
+
+<%= render 'autocomplete' %>

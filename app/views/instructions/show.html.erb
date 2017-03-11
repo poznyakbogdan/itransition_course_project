@@ -36,7 +36,7 @@
 		<% end %>
 
 		<% if can? :update, @instruction %>	
-			<%= link_to "edit",  edit_instruction_path(@instruction.id),
+			<%= link_to t("instruction.edit_link"),  edit_instruction_path(@instruction.id),
 													 :class => "instruction-edit-link" %>
 		<% end %>
 	</div>

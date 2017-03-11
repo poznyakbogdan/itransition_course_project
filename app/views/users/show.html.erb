@@ -22,19 +22,19 @@
 						<%= render 'instructions/vote', :instruction => i %>
 					</td>
 					<td>
-						<%= link_to "show", instruction_path(i.id),
+						<%= link_to t("instruction.show_link"), instruction_path(i.id),
 																:class => "instruction-show-link" %>
 					</td>
 					<% if can? :update, i %>	
 						
 						<td>
-							<%= link_to "edit",  edit_instruction_path(i.id),
+							<%= link_to t("instruction.edit_link"),  edit_instruction_path(i.id),
 																	:class => "instruction-show-link" %>
 						</td>
 					<% end %>	
 					<% if can? :destroy, i  %>	
 						<td>
-							<%= link_to "delete",  instruction_path(i.id),
+							<%= link_to t("instruction.delete_link"),  instruction_path(i.id),
 							method: :delete, :class => "instruction-show-link btn btn-danger" %>
 						</td>
 					<% end %>	

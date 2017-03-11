@@ -1,0 +1,18 @@
+<script type="">
+	$(document).on('turbolinks:load', function() {	
+		var tags_url = $('[name="instruction[tag_list]"]').attr("href");
+		var tags = [];
+		$.ajax({
+			url: tags_url,
+			method: "POST"
+		}).done(function (data) {
+			$(data).each(function (i) {
+				tags.push(this.name);
+			})	
+		});
+		
+		$( "#instruction_tag_list_tag" ).autocomplete({
+	    source: tags
+	  });
+	});
+</script>

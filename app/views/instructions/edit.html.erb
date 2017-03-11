@@ -4,13 +4,13 @@
     <div class="col-lg-10 col-lg-offset-1">
       <%= form_for @instruction do |f| %>
         <%= render 'errors' %>
-        <%= f.label :name %>
+        <%= f.label :name, t("instruction.name") %>
         <%= f.text_field :name, class: 'form-control' %>
 
-        <%= f.label :video_url %>
+        <%= f.label :video_url, t("instruction.video") %>
         <%= f.text_field :video_url, class: 'form-control' %>
         
-        <%= f.label :category_id, "Change category" %>
+        <%= f.label :category_id, t("instruction.category.change") %>
         <%= f.select :category_id, id: "speed" do %>
           <% @categories.each do |c| %>
             <%= content_tag :option, c.name, value: c.id %>
@@ -18,9 +18,9 @@
         <% end %>
         
         
-        <%= f.label :tag_list, "Tags" %>
+        <%= f.label :tag_list, t("instruction.tags.title") %>
         <%= f.text_field :tag_list, :class => "form-control",
-                          value: @instruction_tags.to_s %>
+                          value: @instruction_tags.to_s, :href => get_tags_list_path %>
 
         <%= render 'steps/show_editable_steps', :instruction_id => @instruction.id, 
                                                 :@steps => @instruction.steps %>
@@ -31,8 +31,9 @@
           <% end %>
         </div>
 
-        <%= f.submit "Save changes", class: "btn btn-primary", id: "instruction_edit_save_button1" %> 
-        <%= link_to "delete",  instruction_path(@instruction.id),
+        <%= f.submit t("instruction.update_link"), class: "btn btn-primary", 
+                                                  id: "instruction_edit_save_button1" %> 
+        <%= link_to t("instruction.delete_link"),  instruction_path(@instruction.id),
             method: :delete, :class => "btn btn-danger instruction-edit-delete-link" %>
       <% end %> 
     
@@ -43,3 +44,4 @@
 <script type="text/javascript">
   $('option[value="<%= @instruction.category_id %>"]').attr('selected', 'selected');
 </script>
+<%= render 'autocomplete' %>

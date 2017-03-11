@@ -20,6 +20,9 @@
 				</tr>
     	<% end %>
   	</table>
-  	<%= will_paginate @instructions %>
+
+  	<div id="page_links">
+    	<%= paginate @instructions %>
+		</div>
 	</div>
 </div>

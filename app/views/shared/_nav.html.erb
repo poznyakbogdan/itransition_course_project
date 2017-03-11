@@ -10,7 +10,7 @@
         </button>
         <a class="navbar-brand" href="#">MyApp</a>
 				<ul class="nav navbar-nav navbar-left">
-					<li><%= link_to "Instructions", instructions_path %></li>
+					<li><%= link_to t("instructions.title"), instructions_path %></li>
 				</ul>
       </div>
 
@@ -34,16 +34,16 @@
 						  	<span class="glyphicon glyphicon-menu-hamburger"></span>	
 						  </button>
 						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><%= link_to "My records", user_path(current_user.id), 
+						    <li><%= link_to t("user.my_instructions"), user_path(current_user.id), 
 						    														:class => "fontello-icon-layers" %>
 						    </li>
-						    <li><%= link_to "New record",  new_instruction_path,
+						    <li><%= link_to t("user.new_instruction"),  new_instruction_path,
 						    														:class => "fontello-icon-plus-circle-1" %>
 						    	 	
 						    </li>
 						    <li><a href="#">Something else here</a></li>
 						    <li role="separator" class="divider"></li>
-						    <li><%= link_to "Log out", destroy_user_session_path, 
+						    <li><%= link_to t("user.log_out"), destroy_user_session_path, 
 						    										:class => "fontello-icon-logout" %>
 						    											
 						    </li>

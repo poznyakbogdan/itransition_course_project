@@ -11,8 +11,8 @@ class Ability
       else
         can :read, :all
 
-        can :create, Instruction do |instruction|
-            user.id
+        can [:tag_name_list, :upvote, :downvote, :create], Instruction do |instruction|
+          user.id
         end
 
         can :update, Instruction do |instruction|
@@ -27,13 +27,13 @@ class Ability
             user.id
         end
 
-        can :update, Comment do |comment|
+        can [:update, :destroy], Comment do |comment|
           comment.user == user
         end
     
-        can :destroy, Comment do |comment|
-          comment.user == user
-        end
+        # can :destroy, Comment do |comment|
+        #   comment.user == user
+        # end
     
       end    
 

@@ -20,4 +20,38 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  user:
+    name: "Name"
+    provider: "Social Network"
+    my_instructions: "My instructions"
+    new_instruction: "New instruction"
+    log_out: "Log out"
+  instructions: 
+    title: "Instructions"
+  instruction:
+    show_link: "Show"
+    edit_link: "Edit"
+    delete_link: "Delete"
+    update_link: "Save changes"
+    save_button: "Save"
+    video: "Video"
+    tags:
+      title: "Tags"
+    category:
+      title: "Category"
+      select: "Select category"
+      change: "Change category"
+    create_steps: "Create steps"
+  step: 
+    title: "Name"
+    description: "Description"
+    submit: "Save changes"
+    create: "Create step"
+    edit: "Edit"
+    image: 
+      name: "Image"
+      upload_button: "Upload image"
+
+  comment:
+    input_text: "Leave your comment"
+    create: "Comment"

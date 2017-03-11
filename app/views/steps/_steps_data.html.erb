@@ -1,3 +1,3 @@
 <h2><%= step.number %> : <%= step.title %></h2>
-<p>description: <%= step.description %></p>
-<p>image: <%= cl_image_tag step.image_url %></p>
+<p><%= t "step.description" %> <%= step.description %></p>
+<p><%= t "step.image.name" %>: <%= cl_image_tag step.image_url %></p>
