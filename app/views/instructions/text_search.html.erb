@@ -1,0 +1,7 @@
+<table>
+	<% @instructions.each do |i| %>
+		<tr>
+			<%= link_to i.name, instruction_path(i.id) %>
+		</tr>
+	<% end %>
+</table>

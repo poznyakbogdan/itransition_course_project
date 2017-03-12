@@ -1,0 +1,36 @@
+ru:
+  user:
+    name: "Имя"
+    provider: "Социальная сеть"
+    my_instructions: "Мои инструкции"
+    new_instruction: "Создать инструкцию"
+    log_out: "Выйти"
+  instructions: 
+    title: "Инструкции"
+  instruction:
+    show_link: "Посмотреть"
+    edit_link: "Редактировать"
+    delete_link: "Удалить"
+    update_link: "Сохранить изменения"
+    save_button: "Сохранить"
+    video: "Видео"
+    tags:
+      title: "Тэги"
+    category:
+      title: "Категория"
+      select: "Выберите категорию"
+      change: "Измените категорию"
+    create_steps: "Создать шаги"
+  step: 
+    title: "Заголовок"
+    description: "Описание"
+    submit: "Сохранить изменения"
+    create: "Создать шаг"
+    edit: "Редактировать"
+    image: 
+      name: "Картинка"
+      upload_button: "Загрузить картинку"
+
+  comment:
+    input_text: "Оставьте свой комментарий"
+    create: "Комментировать"

@@ -4,6 +4,10 @@ class InstructionsController < ApplicationController
 	load_and_authorize_resource param_method: :instruction_params
 	# before_action :set_instruction, only: [:upvote, :downvote]
 
+	def text_search
+		@instructions = Instruction.search(params[:search])
+	end
+
 	def index
 		if params[:tag]
 			@instructions = Instruction.paginate(:page => params[:page]).tagged_with(params[:tag]).eager_load(:tags, :category).order(:cached_votes_score => :desc)

@@ -20,8 +20,10 @@
 		          <%= link_to( t("step.image.upload_button"), "#", :class => "upload_button") %>
 		          <% if @unsigned %>
 		            <%= f.cl_unsigned_image_upload(:image, @preset_name) %>
+		            <div id="direct_upload" style="height: 200px"></div>
 		          <% else %>
 		            <%= f.cl_image_upload(:image, :return_delete_token=>true) %>
+		            <div id="direct_upload" style="height: 200px"></div>
 		          <% end %>
 		        </div>
 		        <span class="status"></span>

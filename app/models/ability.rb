@@ -11,6 +11,8 @@ class Ability
       else
         can :read, :all
 
+        can :text_search, Instruction
+
         can [:tag_name_list, :upvote, :downvote, :create], Instruction do |instruction|
           user.id
         end
