@@ -22,6 +22,7 @@
 //= require cloudinary
 //= require cloudinary/processing 
 //= require slick.min
+//= require jquery.tagcanvas.min
 //= require turbolinks
 //= require_tree .
 

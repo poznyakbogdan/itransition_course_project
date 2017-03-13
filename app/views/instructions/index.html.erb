@@ -1,8 +1,19 @@
 <div class="container">
 	<!-- <div class="table-responsive"> -->
-  <% tag_cloud(Instruction.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-		  <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
-	<% end %>
+  
+	<div id="myCanvasContainer">
+ 		<canvas width="300" height="300" id="myCanvas">
+  		<p>Anything in here will be replaced on browsers that support the canvas element</p>
+ 		</canvas>
+	</div>
+	<div id="tagList">
+	 <ul>
+	  	<% tag_cloud(Instruction.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+		  	<li><%= link_to tag.name, tag_path(tag.name), :class => css_class %></li>
+			<% end %>
+	  </ul>
+	</div>
+
 	<div id="page_links_up">
   	<%= paginate @instructions %>
 	</div>

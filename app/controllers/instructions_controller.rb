@@ -58,10 +58,18 @@ class InstructionsController < ApplicationController
 	end
 
 	def show
-			p current_user
-			@instruction = Instruction.eager_load(:steps, :tags).where(id: params[:id]).to_a.first
-			@category = Category.find(@instruction.category_id)
+			@instruction = Instruction.eager_load(:steps, :tags, :category).where(id: params[:id]).to_a.first
 			@comments = Comment.where(step_id: @instruction.steps.ids).eager_load(:user).to_a
+			respond_to do |format|
+				format.html
+				format.pdf do
+					pdf = InstructionPdf.new(@instruction)
+					
+					send_data pdf.render, filename: "instruction_#{@instruction.id}.pdf",
+																type: "application/pdf",
+																disposition: "inline"
+				end
+			end
 	end
 
 	def destroy

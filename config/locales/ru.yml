@@ -22,6 +22,7 @@ ru:
       change: "Измените категорию"
     create_steps: "Создать шаги"
   step: 
+    word: "Шаг"
     title: "Заголовок"
     description: "Описание"
     submit: "Сохранить изменения"

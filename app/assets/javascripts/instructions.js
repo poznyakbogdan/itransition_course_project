@@ -21,5 +21,9 @@ $(document).on('turbolinks:load', function() {
 
 	});
 
+	$('#myCanvas').tagcanvas({
+     depth : 0.75,
+     textColour: '#00f',
+   },'tagList');
 
 });

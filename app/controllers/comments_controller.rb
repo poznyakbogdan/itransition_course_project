@@ -1,4 +1,11 @@
 class CommentsController < ApplicationController
+  
+  begin
+    p "12312312"
+  rescue ActiveRecord::RecordInvalid => invalid
+    puts invalid.record.errors
+  end
+
   def new
   end
 
@@ -8,9 +15,15 @@ class CommentsController < ApplicationController
   def create
   	@step = Step.find(params[:step_id])
   	user_id = params[:user_id]
-  	@comment = @step.comments.create(content: params[:comment][:content], user_id: user_id)
-  	# p @comment
-  	# redirect_to instruction_path params[:instruction_id]
+  	if @step.comments.create!(content: params[:comment][:content], user_id: user_id)
+      @comment = @step.comments.create(content: params[:comment][:content], user_id: user_id)  
+    else
+      p "else"
+      respond_to do |format|
+        p "format"  
+        format.js { "alert('123213')" }
+      end
+    end
   end
 
   def destroy

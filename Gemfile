@@ -50,6 +50,8 @@ gem 'rolify'
 gem 'will_paginate', '~> 3.1.0'
 gem 'jdbc-mysql',      '= 5.1.35',  :platform => :jruby
 gem 'thinking-sphinx', '~> 3.2.0'
+gem 'prawn', '~> 2.1'
+gem 'rqrcode', '~> 0.10.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

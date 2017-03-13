@@ -43,6 +43,7 @@ en:
       change: "Change category"
     create_steps: "Create steps"
   step: 
+    word: "Step"
     title: "Name"
     description: "Description"
     submit: "Save changes"

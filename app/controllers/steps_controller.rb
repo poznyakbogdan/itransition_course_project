@@ -1,5 +1,5 @@
 class StepsController < ApplicationController
-
+	
 	def index
 		@instruction_id = params[:instruction_id]
 		@steps = Step.where(instruction_id: @instruction_id).order(:number)	

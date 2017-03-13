@@ -6,19 +6,22 @@
 			</p>
 		<% end %>
 	
-		<%= render 'instruction_data', :instruction => @instruction, :category => @category %>
+		<%= render 'instruction_data', :instruction => @instruction %>
 		
 		<%= render 'tags', :tags => @instruction.tags %>
 
 		<%= youtube_embded(@instruction.video_url) if @instruction.video_url %>
 		
 		<%= render 'vote', :instruction => @instruction %>
+		<%= link_to "pdf", instruction_path(@instruction, format: "pdf")%>
 		<div class="steps-carousel">
 			<% (@instruction.steps.sort {|x,y| x.number <=> y.number}).each do |i| %>
 				<div class="step-container">
 					<div class="step-content-container" style="background-image: url(<%= i.image_url %>)">
 						<div class="step-title-container">
 							<p>
+								<span><%= i.number %></span>
+								<span><%= t("step.word") %>:</span>
 								<%= i.title %>
 							</p>
 						</div>
