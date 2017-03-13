@@ -14,6 +14,8 @@
  *= require jquery-ui
  *= require bootstrap-tokenfield.min
  *= require jquery.tagsinput.min
+ *= require slick
+ *= require slick-theme
  *= require_self
  */
 
@@ -38,3 +40,166 @@ a:hover{
 	text-decoration: none;
 }
 
+//////////////////////////////////////////////////////
+body{
+	background: #eeeeee;
+}
+.instruction_preview{
+	background: #fefefe;
+	border-radius: 3px;
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+	padding: 20px 15px 10px;
+	margin: 20px 10px;
+	box-sizing: border-box;
+	width: 100%;
+	height: 480px;
+}
+
+.author_section{
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #eeeeee;
+}
+li{
+	list-style-type: none;
+}
+.instruction_tag_list{
+	display: flex;
+	padding: 10px 0;
+	flex-wrap: wrap;
+	height: 80px;
+	overflow: hidden;
+}
+li.tag{
+	display: inline-block;
+	padding: 3px 10px;
+	margin-right: 10px;
+	border-radius: 2px;
+	background: #5cb85c;
+	color: #fefefe;
+	margin-bottom: 5px;
+	box-sizing: border-box;
+	max-height: 26px;
+}
+li.tag>a{
+	color: white;
+}
+.image_section{
+	height: 200px;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+.instruction_image{
+	display: block;
+	width: 100%;
+}
+.stats_section{
+	display: flex;
+	justify-content: space-between;
+}
+//////////////////////////////////////////////////////
+
+.mosaicflow__column {
+  float: left;
+}
+.mosaicflow__item div {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+/////////////////////////////////////////////////////
+.slick-arrow{
+	width: 40px;
+	height: 100%;
+	background: rgba(0,0,0, .4);
+}
+.slick-prev{
+	left: -45px;
+}
+.slick-next{
+	right: -45px;
+}
+
+.step-content-container{
+	height: 600px;
+	width: 75%;
+	background: green;
+	float: left;
+	position: relative;
+}
+.step-comments-container{
+	height: 600px;
+	width: 25%;
+	background: blue;
+	float: left;	
+	position: relative;
+}
+.step-container{
+	position: relative;
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.14);
+}
+.step-content-container{
+	background-size: cover;
+}
+.step-title-container{
+	width: 100%;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.6);
+	color: white;
+	padding: 10px 30px;
+}
+.step-description-container{
+	position: absolute;
+	top: 80%;
+	min-height: 20%;
+	background: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	overflow: hidden;
+	color: white;
+}
+.step-comments-container{
+	background: #CCCCFF;
+	color: black;
+	padding: 0 0px 5px;
+}
+.step-comments-title{
+	width: 100%;
+	padding: 20px 30px;
+	color: black;
+	border-bottom: 1px solid grey;
+}
+.step-comment-form{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	padding: 5px;
+	text-align: right;
+	color: black;
+	box-sizing: border-box;
+}
+.comment-text-field{
+	resize: none;
+	display: block;
+	width: 100%;
+	height: 15%;
+	border-radius: 3px;
+	margin-bottom: 5px;
+}
+.step_comments{
+	color: black;
+}
+p{
+	margin: 0px;
+}
+.comment-block{
+	margin-bottom: 10px;
+	padding: 0px 10px;
+}
+input[value="Comment"]{
+	display: block;
+	width: 100%;
+}
+.instruction-video{
+	width: 500px;
+	height: 300px;
+}

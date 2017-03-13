@@ -15,25 +15,34 @@
 		    
 		    
 		      <%= f.label :image, t("step.image.name") %>
-		    
-		        <div class="upload_button_holder">
-		          <%= link_to( t("step.image.upload_button"), "#", :class => "upload_button") %>
-		          <% if @unsigned %>
-		            <%= f.cl_unsigned_image_upload(:image, @preset_name) %>
-		            <div id="direct_upload" style="height: 200px"></div>
-		          <% else %>
-		            <%= f.cl_image_upload(:image, :return_delete_token=>true) %>
-		            <div id="direct_upload" style="height: 200px"></div>
-		          <% end %>
-		        </div>
-		        <span class="status"></span>
-		    
-		    
-		    <div class="form_line">
-		      <div class="form_controls">
-		        <div class="preview"></div>
-		      </div>
-		    </div>
+						
+						<div class="step--edit-image-container">
+							<%= cl_image_tag @step.image %>
+							<a class="change-step-image-btn">
+								change
+							</a>
+						</div>
+
+						<div class="edit-image-upload">			    
+			        <div class="upload_button_holder">
+			          <%#= link_to( t("step.image.upload_button"), "#", :class => "upload_button") %>
+			          <% if @unsigned %>
+			            <%= f.cl_unsigned_image_upload(:image, @preset_name) %>
+			            <div id="direct_upload" style="height: 200px"></div>
+			          <% else %>
+			            <%= f.cl_image_upload(:image, :return_delete_token=>true) %>
+			            <div id="direct_upload" style="height: 200px"></div>
+			          <% end %>
+			        </div>
+			        <span class="status"></span>
+			    
+			    
+				    <div class="form_line">
+				      <div class="form_controls">
+				        <div class="preview"></div>
+				      </div>
+				    </div>
+				  </div>  
 		    <%= f.submit t("step.submit") %>
 		        
 		  <% end %>

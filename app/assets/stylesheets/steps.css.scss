@@ -104,6 +104,27 @@ $link-text: #777;
   
 }
 
+#direct_upload{
+  width: 100%;
+
+}
+.upload_button_holder{
+  width: 100%;
+}
+.edit-image-upload{
+  display: none;
+}
+.step--edit-image-container{
+  position: relative;
+}
+.change-step-image-btn{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: blue;
+  padding: 5px;
+  color: white;
+}
 /////////////////////////////////////////////////////
 
 

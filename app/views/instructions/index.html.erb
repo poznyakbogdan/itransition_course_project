@@ -1,28 +1,49 @@
 <div class="container">
-	<div class="table-responsive">
-  	<% tag_cloud(Instruction.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+	<!-- <div class="table-responsive"> -->
+  <% tag_cloud(Instruction.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
 		  <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
-		<% end %>
-  	<table class="table">
-    	<% @instructions.each do |i| %>
-				<tr>
+	<% end %>
+	<div id="page_links_up">
+  	<%= paginate @instructions %>
+	</div>
+  <div class="row instructions_container">	
+  	<% @instructions.each do |i| %>
+			<div class="col-lg-4">
+				<div class="instruction_preview">
 					<%= render 'preview', :instruction => i %>
-					<td>
-						<%= render 'tags', :tags => i.tags %>
-					</td>
-					<td>
-						<%= link_to t("instruction.show_link"), instruction_path(i.id),
-																:class => "instruction-show-link" %>
-					</td>
-					<td>
-						<%= render 'vote', :instruction => i %>
-					</td>
-				</tr>
-    	<% end %>
-  	</table>
+					
+					<div class="instruction_data_container instruction_section">
+						<p class="instruction_name"><%= i.name %></p>
+						<ul class="instruction_tag_list">
+							<%= render 'tags', :tags => i.tags %>
+						</ul>
+						<p class="instruction_description">
+							<%=  i.video_url != "" ? i.video_url : "no video" %>
+						</p>
+					</div>
 
-  	<div id="page_links">
-    	<%= paginate @instructions %>
-		</div>
+					<div class="instruction_image_container image_section">
+						
+						<%= image_tag instruction_image_preview(i), class: "instruction_image" %>
+					</div>
+				
+					<div class="instruction_footer_container stats_section">
+						<div class="control-group_container">
+							<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-eye-open"),instruction_path(i.id), class: "btn btn-primary", role: "button" %>
+						</div>
+				
+						<%= render 'vote', :instruction => i %>
+				
+					</div>
+				
+				</div>
+			</div>
+  	<% end %>
+
+  
+	<!-- </div> -->
+	</div>
+	<div id="page_links">
+  	<%= paginate @instructions %>
 	</div>
 </div>

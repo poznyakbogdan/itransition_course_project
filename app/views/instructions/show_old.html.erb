@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="row">	
+		<% if notice %>
+			<p class="bg-success">
+				<%= notice %>
+			</p>
+		<% end %>
+	
+		<%= render 'instruction_data', :instruction => @instruction, :category => @category %>
+		
+		<%= render 'tags', :tags => @instruction.tags %>
+		
+		<%= render 'vote', :instruction => @instruction %>
+		<div class="steps-carousel">
+			<% (@instruction.steps.sort {|x,y| x.number <=> y.number}).each do |i| %>
+				<div class="">
+			
+					<%= render 'steps/steps_data', :step => i %>
+					
+					<div class="instruction--step_<%= i.id %>--comments-container">
+						
+						<% (@comments.select {|c| c.step_id == i.id}).each do |comment| %>
+							<%= render 'comments/show_comment', :comment => comment %>
+						<% end %>
+					
+					</div>
+					
+					<% if current_user %>
+						
+						<div class="instruction--step_<%= i.id %>--comment-form-container">
+							<%= render 'comments/form', :user_id => current_user.id, 
+																					:step => i, :instruction_id => @instruction.id %>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+	</div>
+
+		<% if can? :update, @instruction %>	
+			<%= link_to t("instruction.edit_link"),  edit_instruction_path(@instruction.id),
+													 :class => "instruction-edit-link" %>
+		<% end %>
+	</div>
+</div>

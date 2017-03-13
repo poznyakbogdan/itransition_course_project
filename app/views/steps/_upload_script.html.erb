@@ -1,4 +1,4 @@
-<script>
+<script class="image_upload_script">
   $(".cloudinary-fileupload")
     .cloudinary_fileupload({
       dropZone: "#direct_upload",
@@ -16,6 +16,7 @@
     .on("cloudinarydone", function (e, data) {
       console.log('done!');
       console.log(data.result.public_id.length);
+      $('#direct_upload').hide();
       $("#photo_bytes").val(data.result.bytes);
       $(".status").text("");
       var preview = $(".preview").html('');
@@ -35,6 +36,7 @@
             $('#info').html('');
             $("#photo_bytes").val('');
             $('input[name="photo[image]"]').remove();
+            $('#direct_upload').show();
           }).fail(function() {
             $('.status').text("Cannot delete image");
         });

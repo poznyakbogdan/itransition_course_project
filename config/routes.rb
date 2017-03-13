@@ -27,14 +27,14 @@ Rails.application.routes.draw do
 			end		
 		end
 		get '/search', to: 'instructions#text_search', as: :search
-		post '/steps/save_steps_numbers', to: 'steps#save_steps_numbers', as: :save_steps_numbers
+		# post '/steps/save_steps_numbers', to: 'steps#save_steps_numbers', as: :save_steps_numbers
 		post '/instructions/tags', to: 'instructions#tag_name_list', as: :get_tags_list
 
 	end
 	devise_for :users, only: :omniauth_callbacks, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-	get '*path', to: redirect("/#{I18n.default_locale}/%{path}")
+	# get '*path', to: redirect("/#{I18n.default_locale}/%{path}")
 	get '', to: redirect("/#{I18n.default_locale}")
-
+	post '/steps/save_steps_numbers', to: 'steps#save_steps_numbers', as: :save_steps_numbers
 end
 
 

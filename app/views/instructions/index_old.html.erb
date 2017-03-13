@@ -1,0 +1,32 @@
+<div class="container">
+	<!-- <div class="table-responsive"> -->
+  <% tag_cloud(Instruction.tag_counts, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+		  <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+	<% end %>
+
+  <div class="row">	
+  	
+  	<!-- <table class="table"> -->
+    	<% @instructions.each do |i| %>
+				<tr>
+					<%= render 'preview', :instruction => i %>
+					<td>
+						<%= render 'tags', :tags => i.tags %>
+					</td>
+					<td>
+						<%= link_to t("instruction.show_link"), instruction_path(i.id),
+																:class => "instruction-show-link" %>
+					</td>
+					<td>
+						<%= render 'vote', :instruction => i %>
+					</td>
+				</tr>
+    	<% end %>
+  	<!-- </table> -->
+
+  	<div id="page_links">
+    	<%= paginate @instructions %>
+		</div>
+	<!-- </div> -->
+	</div>
+</div>

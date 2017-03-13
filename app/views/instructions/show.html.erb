@@ -9,31 +9,48 @@
 		<%= render 'instruction_data', :instruction => @instruction, :category => @category %>
 		
 		<%= render 'tags', :tags => @instruction.tags %>
+
+		<%= youtube_embded(@instruction.video_url) if @instruction.video_url %>
 		
 		<%= render 'vote', :instruction => @instruction %>
-		
-		<% (@instruction.steps.sort {|x,y| x.number <=> y.number}).each do |i| %>
-			<div>
-		
-				<%= render 'steps/steps_data', :step => i %>
-				
-				<div class="instruction--step_<%= i.id %>--comments-container">
+		<div class="steps-carousel">
+			<% (@instruction.steps.sort {|x,y| x.number <=> y.number}).each do |i| %>
+				<div class="step-container">
+					<div class="step-content-container" style="background-image: url(<%= i.image_url %>)">
+						<div class="step-title-container">
+							<p>
+								<%= i.title %>
+							</p>
+						</div>
 					
-					<% (@comments.select {|c| c.step_id == i.id}).each do |comment| %>
-						<%= render 'comments/show_comment', :comment => comment %>
-					<% end %>
-				
-				</div>
-				
-				<% if current_user %>
-					
-					<div class="instruction--step_<%= i.id %>--comment-form-container">
-						<%= render 'comments/form', :user_id => current_user.id, 
-																				:step => i, :instruction_id => @instruction.id %>
+						<div class="step-description-container">
+							<p>
+								<%= raw(i.description) %>
+							</p>
+						</div>
+	
 					</div>
-				<% end %>
-			</div>
-		<% end %>
+					<div class="step-comments-container">
+						<p class="step-comments-title">
+							Comments:
+						</p>
+						<div class="step_comments instruction--step_<%= i.id %>--comments-container">
+							<% (@comments.select {|c| c.step_id == i.id}).each do |comment| %>
+								<%= render 'comments/show_comment', :comment => comment %>
+							<% end %>
+						</div>
+						<% if current_user %>
+						
+							<div class="instruction--step_<%= i.id %>--comment-form-container step-comment-form">
+								<%= render 'comments/form', :user_id => current_user.id, 
+																						:step => i, :instruction_id => @instruction.id %>
+							</div>
+						<% end %>
+
+					</div>	
+				</div>
+			<% end %>
+	</div>
 
 		<% if can? :update, @instruction %>	
 			<%= link_to t("instruction.edit_link"),  edit_instruction_path(@instruction.id),

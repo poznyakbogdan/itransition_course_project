@@ -2,7 +2,6 @@
 	
 	<%= render 'show_editable_steps', :instruction_id => @instruction_id %>
 
-	<%= link_to t("instruction.save_button"), save_steps_numbers_path(@instruction_id), remote: true,  
-														:id => "steps-save-link" %>
+	<%= link_to t("instruction.save_button"), save_steps_numbers_path(@instruction_id), remote: true, :id => "steps-save-link" %>
 </div>
 

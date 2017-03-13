@@ -1,3 +1,11 @@
-<td><%= instruction.name %></td>
-<td><%= instruction.category.name %></td>
-<td><%= instruction.video_url %></td>
+
+<div class="instruction_header_container author_section">
+	<a href="#" class="instruction_preview_link author_link">
+		<b><%= instruction.user.name %></b>
+	</a>
+	<a href="#" class="instruction_preview_link category_link">
+		<b><%= instruction.category.name %></b>
+	</a>
+
+	<span class="instruction_time"><%= instruction.updated_at.to_date %></span>
+</div>

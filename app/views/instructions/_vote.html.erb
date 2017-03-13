@@ -1,11 +1,15 @@
-<div class="instruction--vote-group instruction_<%= instruction.id %>_vote">
-	<%= link_to like_instruction_path(instruction), method: :put, class: "upvote", remote: true do %>
-		<span>Like</span>
-		<span class="votes-quantity"><%= instruction.cached_votes_up %></span>
+<div class="instruction--vote-group instruction_<%= instruction.id %>_vote votes_container">
+	<%= link_to like_instruction_path(instruction), method: :put, 
+								class: "btn btn-primary upvote", remote: true do %>
+		<span class="glyphicon glyphicon-thumbs-up"></span>
+		<span class="votes-quantity badge"><%= instruction.cached_votes_up %></span>
 	<% end %>
 
-	<%= link_to dislike_instruction_path(instruction), method: :put, class: "downvote", remote: true do %>
-		<span>Dislike</span>
-		<span class="votes-quantity"><%= instruction.cached_votes_down %></span>
+	<%= link_to dislike_instruction_path(instruction), method: :put, 
+							class: "btn btn-primary downvote", remote: true do %>
+		<span class="glyphicon glyphicon-thumbs-down"></span>
+		<span class="votes-quantity badge"><%= instruction.cached_votes_down %></span>
 	<% end %>
 </div>
+
+

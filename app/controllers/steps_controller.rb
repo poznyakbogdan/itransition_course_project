@@ -72,7 +72,11 @@ class StepsController < ApplicationController
 
 	def get_image_url
 		url = params[:step][:image]
-		url = "http://res.cloudinary.com/bntu/#{url.gsub(/\#(.*)/, "")}"
+		if url 
+			url = "http://res.cloudinary.com/bntu/#{url.gsub(/\#(.*)/, "")}"
+		else
+			@step.image
+		end	
 	end
 
 	def correct_instruction

@@ -21,6 +21,7 @@
 //= require ckeditor/init
 //= require cloudinary
 //= require cloudinary/processing 
+//= require slick.min
 //= require turbolinks
 //= require_tree .
 

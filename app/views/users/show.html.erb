@@ -7,40 +7,46 @@
   	<table class="table">	
   		 <%= render 'info', :user => @user %>
   	</table>
-
-  	<table class="table">
-
-    	<% @instructions.each do |i| %>
-				<tr>
-					
+  	<% @instructions.each do |i| %>
+			<div class="col-lg-4">
+				<div class="instruction_preview">
 					<%= render 'instructions/preview', :instruction => i %>
 					
-					<td>
-						<%= render 'instructions/tags', :tags => i.tags %>
-					</td>
-					<td>
+					<div class="instruction_data_container instruction_section">
+						<p class="instruction_name">Name</p>
+						<ul class="instruction_tag_list">
+							<%= render 'instructions/tags', :tags => i.tags %>
+						</ul>
+						<p class="instruction_description">
+							<%=  i.video_url != "" ? i.video_url : "no video" %>
+						</p>
+					</div>
+
+					<div class="instruction_image_container image_section">
+						<%= image_tag instruction_image_preview(i), class: "instruction_image" %>
+					</div>
+				
+					<div class="instruction_footer_container stats_section">
+						<div class="control-group_container">
+							<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-eye-open"),instruction_path(i.id), class: "btn btn-primary", role: "button" %>
+							<% if can? :update, i %>	
+								<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-pencil"),  edit_instruction_path(i.id), class: "btn btn-warning", role: "button" %>
+							<% end %>	
+							<% if can? :destroy, i %>	
+							<%= link_to content_tag(:span, "", class: "glyphicon glyphicon-remove"),									instruction_path(i.id),	method: :delete, 
+																class: "btn btn-danger", role: "button" %>
+							<% end %>
+
+						</div>
+				
 						<%= render 'instructions/vote', :instruction => i %>
-					</td>
-					<td>
-						<%= link_to t("instruction.show_link"), instruction_path(i.id),
-																:class => "instruction-show-link" %>
-					</td>
-					<% if can? :update, i %>	
-						
-						<td>
-							<%= link_to t("instruction.edit_link"),  edit_instruction_path(i.id),
-																	:class => "instruction-show-link" %>
-						</td>
-					<% end %>	
-					<% if can? :destroy, i  %>	
-						<td>
-							<%= link_to t("instruction.delete_link"),  instruction_path(i.id),
-							method: :delete, :class => "instruction-show-link btn btn-danger" %>
-						</td>
-					<% end %>	
-				</tr>
-    	<% end %>
-  	</table>
+				
+					</div>
+				
+				</div>
+			</div>
+  	<% end %>
+
   
 	</div>
 </div>

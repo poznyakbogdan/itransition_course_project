@@ -3,7 +3,7 @@
 url: instruction_step_comments_path(step.instruction_id, step.id, :user_id => user_id)) do |f| %>
 	
 	<%= f.label :content, t("comment.input_text") %>
-  <%= f.text_area :content %>
+  <%= f.text_area :content, class: "comment-text-field" %>
 
 	<%= f.submit t("comment.create") %>
 <% end %>

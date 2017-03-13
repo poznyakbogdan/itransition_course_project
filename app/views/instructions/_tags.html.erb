@@ -1,6 +1,6 @@
-<p>
-	<%= t "instruction.tags.title" %>: 
-		<% tags.each do |t| %>
-			<%= t.name %>
-		<% end %>	
-</p>
+
+<% tags.each do |t| %>
+	<li class="tag">
+		<a href=""><%= t.name %></a>
+	</li>	
+<% end %>	

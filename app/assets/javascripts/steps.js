@@ -44,3 +44,9 @@
 // 			console.log('done');
 // 		});
 // }
+$(document).on('turbolinks:load', function() {
+	$('body').on('click', '.change-step-image-btn', function(){
+		$('.step--edit-image-container').css("display", "none");
+		$('.edit-image-upload').css("display", "block");
+	})
+});
