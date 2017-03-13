@@ -1,6 +1,8 @@
-
-<% tags.each do |t| %>
-	<li class="tag">
-		<a href=""><%= t.name %></a>
-	</li>	
-<% end %>	
+<span>Tags</span>
+<ul class="instruction-tags-show-container">
+	<% tags.each do |t| %>
+		<li class="tag">
+			<%= link_to t.name, tag_path(t.name) %>
+		</li>	
+	<% end %>	
+</ul>

@@ -9,11 +9,14 @@
 		<%= render 'instruction_data', :instruction => @instruction %>
 		
 		<%= render 'tags', :tags => @instruction.tags %>
-
-		<%= youtube_embded(@instruction.video_url) if @instruction.video_url %>
-		
-		<%= render 'vote', :instruction => @instruction %>
-		<%= link_to "pdf", instruction_path(@instruction, format: "pdf")%>
+		<div class="instruction-video-container">
+			<%= youtube_embded(@instruction.video_url) %>
+			<%= link_to instruction_path(@instruction, format: "pdf"), :class => "btn btn-info pdf-button" do %>
+				<span class="glyphicon glyphicon-file"></span>
+			<% end %>
+			<%= render 'vote', :instruction => @instruction %>
+		</div>
+	
 		<div class="steps-carousel">
 			<% (@instruction.steps.sort {|x,y| x.number <=> y.number}).each do |i| %>
 				<div class="step-container">

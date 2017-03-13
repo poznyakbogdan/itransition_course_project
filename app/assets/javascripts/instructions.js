@@ -26,4 +26,8 @@ $(document).on('turbolinks:load', function() {
      textColour: '#00f',
    },'tagList');
 
+	$(document).on('click', 'step-cansel-button', function (argument) {
+		$('.form-shadov').remove();
+	})
+	
 });

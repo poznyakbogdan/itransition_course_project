@@ -10,12 +10,11 @@ class InstructionsController < ApplicationController
 
 	def index
 		if params[:tag]
-			@instructions = Instruction.paginate(:page => params[:page]).tagged_with(params[:tag]).eager_load(:tags, :category).order(:cached_votes_score => :desc)
+			@instructions = Instruction.paginate(:page => params[:page]).tagged_with(params[:tag]).eager_load(:tags, :category, :steps).order(:cached_votes_score => :desc)
 		else		
-			@instructions = Instruction.all.paginate(:page => params[:page]).eager_load(:tags, :category).order(:cached_votes_score => :desc)
+			@instructions = Instruction.all.paginate(:page => params[:page]).eager_load(:tags, :category, :steps).order(:cached_votes_score => :desc)
 		end	
-		# @instruction.paginate(:page => params[:page])
-		# @categories = Category.select("id, name")
+		@steps = Step.where(instruction_id: @instructions.ids).eager_load(:image)
 	end
 
 	def new

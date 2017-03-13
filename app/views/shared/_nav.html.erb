@@ -8,7 +8,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">MyApp</a>
+        <%= link_to "MyApp", root_path, class: "navbar-brand" %>
 				<ul class="nav navbar-nav navbar-left">
 					<li><%= link_to t("instructions.title"), instructions_path %></li>
 				</ul>
@@ -23,19 +23,20 @@
         	</div>
         	<button type="submit" class="btn btn-default">Submit</button>
       	</form> -->
-      	<%= form_tag search_path, method: :get, class: "navbar-form navbar-right" do %>
-					<div class="form-group">
-          	<%= text_field_tag :search, params[:search], class: "form-control" %>
-        		<%= submit_tag "Search", name: nil %>
-        	</div>
-      	<% end %>
+      	
         <ul class="nav navbar-nav navbar-right">
-					
-					<li>
-						<%= link_to_unless_current "English", locale: "en" %>
-						<%= link_to_unless_current "Russian", locale: "ru" %>
+					<li class="user-actions-dropdown">
+						<div class="btn-group">
+						  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						    EN/RU<span class="caret"></span>
+						  </button>
+						  <ul class="dropdown-menu">
+						    <li class="locale-control"><%= link_to_unless_current "English", locale: "en" %></li>
+						    <li class="locale-control"><%= link_to_unless_current "Russian", locale: "ru" %></li>
+						  </ul>
+						</div>
 					</li>
-
+					
 					<% if current_user %>
 						
 						<li>
@@ -81,6 +82,12 @@
 	          </li>
 					<% end %>
         </ul>
+        <%= form_tag search_path, method: :get, class: "navbar-form navbar-right" do %>
+					<div class="form-group">
+          	<%= text_field_tag :search, params[:search], class: "form-control" %>
+        		<%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+        	</div>
+      	<% end %>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
